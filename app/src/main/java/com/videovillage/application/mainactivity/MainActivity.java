@@ -1,4 +1,4 @@
-package com.videovillage.application;
+package com.videovillage.application.mainactivity;
 
 
 /*
@@ -17,44 +17,32 @@ package com.videovillage.application;
  * limitations under the License.
  */
 
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
-import com.google.android.youtube.player.YouTubeApiServiceUtil;
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayer.OnFullscreenListener;
-import com.google.android.youtube.player.YouTubePlayer.OnInitializedListener;
-import com.google.android.youtube.player.YouTubePlayer.Provider;
-import com.google.android.youtube.player.YouTubePlayerFragment;
-import com.google.android.youtube.player.YouTubeThumbnailLoader;
-import com.google.android.youtube.player.YouTubeThumbnailLoader.ErrorReason;
-import com.google.android.youtube.player.YouTubeThumbnailView;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.ListFragment;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
-import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import com.google.android.youtube.player.YouTubeApiServiceUtil;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer.OnFullscreenListener;
+import com.videovillage.application.R;
+import com.videovillage.application.video.VideoFragment;
+import com.videovillage.application.video.VideoListFragment;
+import com.videovillage.application.constant.Constant;
+import com.videovillage.application.thread.DataGetThread;
+
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 /**
  * A sample Activity showing how to manage multiple YouTubeThumbnailViews in an adapter for display
@@ -91,6 +79,13 @@ public final class MainActivity extends Activity implements OnFullscreenListener
         layout();
 
         checkYouTubeApi();
+
+        new DataGetThread("망가녀");
+        new DataGetThread("김남욱");
+        new DataGetThread("김하나");
+        new DataGetThread("신별");
+        new DataGetThread("예쁘린");
+        new DataGetThread("0zoo%20영주");
     }
 
     private void checkYouTubeApi() {

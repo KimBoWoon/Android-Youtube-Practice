@@ -1,4 +1,4 @@
-package com.videovillage.application;
+package com.videovillage.application.adapter;
 
 /**
  * Created by secret on 8/27/16.
@@ -14,6 +14,9 @@ import android.widget.TextView;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubeThumbnailLoader;
 import com.google.android.youtube.player.YouTubeThumbnailView;
+import com.videovillage.application.R;
+import com.videovillage.application.constant.Constant;
+import com.videovillage.application.data.VideoEntry;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,24 +87,24 @@ public class PageAdapter extends BaseAdapter {
             // 1) The view has not yet been created - we need to initialize the YouTubeThumbnailView.
             view = inflater.inflate(R.layout.video_list_item, parent, false);
             YouTubeThumbnailView thumbnail = (YouTubeThumbnailView) view.findViewById(R.id.thumbnail);
-            thumbnail.setTag(entry.videoId);
-            thumbnail.initialize(Constant.YOUTUBE_API_KEY, thumbnailListener);
+            thumbnail.setTag(entry.getVideoId());
+            thumbnail.initialize(Constant.YOUTUBE_ANDROID_API_KEY, thumbnailListener);
         } else {
             YouTubeThumbnailView thumbnail = (YouTubeThumbnailView) view.findViewById(R.id.thumbnail);
             YouTubeThumbnailLoader loader = thumbnailViewToLoaderMap.get(thumbnail);
             if (loader == null) {
                 // 2) The view is already created, and is currently being initialized. We store the
                 //    current videoId in the tag.
-                thumbnail.setTag(entry.videoId);
+                thumbnail.setTag(entry.getVideoId());
             } else {
                 // 3) The view is already created and already initialized. Simply set the right videoId
                 //    on the loader.
                 thumbnail.setImageResource(R.drawable.loading_thumbnail);
-                loader.setVideo(entry.videoId);
+                loader.setVideo(entry.getVideoId());
             }
         }
         TextView label = ((TextView) view.findViewById(R.id.text));
-        label.setText(entry.text);
+        label.setText(entry.getText());
         label.setVisibility(labelsVisible ? View.VISIBLE : View.GONE);
         return view;
     }

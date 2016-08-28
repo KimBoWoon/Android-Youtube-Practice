@@ -1,10 +1,12 @@
-package com.videovillage.application;
+package com.videovillage.application.video;
 
 import android.os.Bundle;
 
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragment;
+import com.videovillage.application.constant.Constant;
+import com.videovillage.application.mainactivity.MainActivity;
 
 /**
  * Created by secret on 8/27/16.
@@ -23,7 +25,7 @@ public final class VideoFragment extends YouTubePlayerFragment
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        initialize(Constant.YOUTUBE_API_KEY, this);
+        initialize(Constant.YOUTUBE_ANDROID_API_KEY, this);
     }
 
     @Override
