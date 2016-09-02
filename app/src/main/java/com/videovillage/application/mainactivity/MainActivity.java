@@ -30,16 +30,22 @@ import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.androidquery.AQuery;
 import com.google.android.youtube.player.YouTubeApiServiceUtil;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer.OnFullscreenListener;
 import com.videovillage.application.R;
+import com.videovillage.application.constant.Constant;
+import com.videovillage.application.data.DataManager;
+import com.videovillage.application.thread.DataGetThread;
 import com.videovillage.application.video.VideoFragment;
 import com.videovillage.application.video.VideoListFragment;
-import com.videovillage.application.constant.Constant;
-import com.videovillage.application.thread.DataGetThread;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -51,8 +57,8 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
  * The demo supports custom fullscreen and transitioning between portrait and landscape without
  * rebuffering.
  */
-@TargetApi(13)
-public final class MainActivity extends Activity implements OnFullscreenListener {
+
+public class MainActivity extends Activity implements OnFullscreenListener {
     private VideoListFragment listFragment;
     private VideoFragment videoFragment;
 
@@ -61,11 +67,14 @@ public final class MainActivity extends Activity implements OnFullscreenListener
 
     private boolean isFullscreen;
 
+    private AQuery aq;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         listFragment = (VideoListFragment) getFragmentManager().findFragmentById(R.id.list_fragment);
         videoFragment =
@@ -76,16 +85,33 @@ public final class MainActivity extends Activity implements OnFullscreenListener
 
         videoBox.setVisibility(View.INVISIBLE);
 
+        aq = new AQuery(this);
+
+//        aq.id(R.id.video_name_submit).clicked(videoSearch);
+
         layout();
 
         checkYouTubeApi();
 
-        new DataGetThread("망가녀");
-        new DataGetThread("김남욱");
-        new DataGetThread("김하나");
-        new DataGetThread("신별");
-        new DataGetThread("예쁘린");
-        new DataGetThread("0zoo%20영주");
+//        new DataGetThread("망가녀");
+//        new DataGetThread("김남욱");
+//        new DataGetThread("김하나");
+//        new DataGetThread("신별");
+//        new DataGetThread("예쁘린");
+//        new DataGetThread("0zoo%20영주");
+    }
+
+    @OnClick(R.id.video_name_submit)
+    public void videoSearch() {
+        String videoName = aq.id(R.id.video_name).getEditText().getText().toString();
+
+        if (videoName.length() == 0)
+            Toast.makeText(getApplicationContext(), "검색어를 입력해주세요!", Toast.LENGTH_SHORT).show();
+        else {
+            videoName = videoName.replace(" ", "%20");
+            DataManager.getDataManager().getVideoEntry().clear();
+            new DataGetThread(videoName);
+        }
     }
 
     private void checkYouTubeApi() {
@@ -170,7 +196,6 @@ public final class MainActivity extends Activity implements OnFullscreenListener
         });
     }
 
-    @TargetApi(16)
     private void runOnAnimationEnd(ViewPropertyAnimator animator, final Runnable runnable) {
         if (Build.VERSION.SDK_INT >= 16) {
             animator.withEndAction(runnable);
@@ -198,7 +223,7 @@ public final class MainActivity extends Activity implements OnFullscreenListener
     }
 
     private static void setLayoutSizeAndGravity(View view, int width, int height, int gravity) {
-        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) view.getLayoutParams();
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) view.getLayoutParams();
         params.width = width;
         params.height = height;
         params.gravity = gravity;

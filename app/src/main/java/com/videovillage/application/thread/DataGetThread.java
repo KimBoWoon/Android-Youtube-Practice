@@ -26,7 +26,7 @@ public class DataGetThread {
 
     public DataGetThread(String keyword) {
         this.keyword = keyword;
-        this.url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + keyword + "&key=" + Constant.YOUTUBE_SERVER_API_KET + "&maxResults=50";
+        this.url = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + keyword + "&key=" + Constant.YOUTUBE_SERVER_API_KET + "&maxResults=10";
         startGetThread();
     }
 
@@ -39,11 +39,11 @@ public class DataGetThread {
     private void startGetThread() {
         DownThread thread = new DownThread(url);
         thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            thread.join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
 
