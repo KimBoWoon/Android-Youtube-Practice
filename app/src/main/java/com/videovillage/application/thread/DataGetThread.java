@@ -37,7 +37,7 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
     protected String doInBackground(String... params) {
         DefaultHttpClient httpClient = HttpServerConnection.getInstance();
         String responseString = null;
-        urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + params[0] + "&key=" + Constant.YOUTUBE_SERVER_API_KET + "&maxResults=10";
+        urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + params[0] + "&key=" + Constant.YOUTUBE_SERVER_API_KET + "&maxResults=50";
 
         try {
             HttpGet httpGet = new HttpGet(urlString);
@@ -87,7 +87,7 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
     protected void onPreExecute() {
         super.onPreExecute();
         progress = new ProgressDialog(context);
-        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progress.setTitle("데이터 수신중...");
         progress.setMessage("잠시만 기다려주세요...");
         progress.setCancelable(false);
