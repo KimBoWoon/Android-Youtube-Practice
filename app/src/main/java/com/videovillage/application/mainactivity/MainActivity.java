@@ -19,23 +19,21 @@ package com.videovillage.application.mainactivity;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewPropertyAnimator;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
+import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.google.android.youtube.player.YouTubeApiServiceUtil;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer.OnFullscreenListener;
@@ -78,6 +76,7 @@ public class MainActivity extends Activity implements OnFullscreenListener {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+        TypefaceProvider.registerDefaultIconSets();
         ButterKnife.bind(this);
 
         listFragment = (VideoListFragment) getFragmentManager().findFragmentById(R.id.list_fragment);
@@ -91,18 +90,9 @@ public class MainActivity extends Activity implements OnFullscreenListener {
 
         aq = new AQuery(this);
 
-//        aq.id(R.id.video_name_submit).clicked(videoSearch);
-
         layout();
 
         checkYouTubeApi();
-
-//        new DataGetThread("망가녀");
-//        new DataGetThread("김남욱");
-//        new DataGetThread("김하나");
-//        new DataGetThread("신별");
-//        new DataGetThread("예쁘린");
-//        new DataGetThread("0zoo%20영주");
     }
 
     @OnClick(R.id.video_name_submit)
@@ -114,12 +104,8 @@ public class MainActivity extends Activity implements OnFullscreenListener {
         else {
             videoName = videoName.replace(" ", "%20");
             DataManager.getDataManager().getVideoEntry().clear();
-            task = new DataGetThread(MainActivity.this);
-            task.execute(videoName);
-            while (task.getStatus() != AsyncTask.Status.FINISHED)
-                Log.i("AsyncTask Get Status", "" + task.getStatus());
-
-            listFragment.getAdapter().notifyDataSetInvalidated();
+            task = new DataGetThread(MainActivity.this, listFragment);
+            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, videoName);
         }
     }
 
@@ -238,5 +224,4 @@ public class MainActivity extends Activity implements OnFullscreenListener {
         params.gravity = gravity;
         view.setLayoutParams(params);
     }
-
 }
