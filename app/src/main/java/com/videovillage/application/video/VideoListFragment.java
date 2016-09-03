@@ -83,4 +83,7 @@ public final class VideoListFragment extends ListFragment {
         adapter.setLabelVisibility(visible);
     }
 
+    public PageAdapter getAdapter() {
+        return adapter;
+    }
 }
