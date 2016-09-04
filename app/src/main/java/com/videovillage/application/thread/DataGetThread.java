@@ -37,7 +37,7 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
     protected String doInBackground(String... params) {
         DefaultHttpClient httpClient = HttpServerConnection.getInstance();
         String responseString = null;
-        urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + params[0] + "&key=" + Constant.YOUTUBE_SERVER_API_KET + "&maxResults=50";
+        urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + params[0] + "&key=" + Constant.YOUTUBE_SERVER_API_KET + "&maxResults=10";
 
         try {
             HttpGet httpGet = new HttpGet(urlString);
