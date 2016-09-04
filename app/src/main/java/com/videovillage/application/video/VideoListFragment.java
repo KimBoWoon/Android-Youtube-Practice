@@ -63,12 +63,12 @@ public final class VideoListFragment extends ListFragment {
                 videoBox.setTranslationY(videoBox.getHeight());
             }
             videoBox.setVisibility(View.VISIBLE);
-            Toast.makeText(getActivity(), "" + position, Toast.LENGTH_SHORT).show();
         }
 
         // If the fragment is off the screen, we animate it in.
         if (videoBox.getTranslationY() > 0) {
             videoBox.animate().translationY(0).setDuration(Constant.ANIMATION_DURATION_MILLIS);
+            Toast.makeText(getActivity(), "VideoBox", Toast.LENGTH_SHORT).show();
         }
     }
 
