@@ -13,4 +13,7 @@
 
     <string name="video_search_button_text">search</string>
     <string name="video_play_text">영상 재생</string>
+
+    <string name="close_drawer">닫기</string>
+    <string name="open_drawer">열기</string>
 </resources>
