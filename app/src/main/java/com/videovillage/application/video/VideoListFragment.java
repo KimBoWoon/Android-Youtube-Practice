@@ -2,17 +2,12 @@ package com.videovillage.application.video;
 
 import android.app.ListFragment;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.videovillage.application.R;
 import com.videovillage.application.adapter.PageAdapter;
-import com.videovillage.application.constant.Constant;
 import com.videovillage.application.data.DataManager;
-import com.videovillage.application.data.VideoEntry;
 
 /**
  * Created by secret on 8/27/16.

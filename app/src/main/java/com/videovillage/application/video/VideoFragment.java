@@ -6,7 +6,6 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragment;
 import com.videovillage.application.constant.Constant;
-import com.videovillage.application.mainactivity.MainActivity;
 
 /**
  * Created by secret on 8/27/16.

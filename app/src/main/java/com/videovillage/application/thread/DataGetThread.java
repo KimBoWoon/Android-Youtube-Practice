@@ -12,18 +12,10 @@ import com.videovillage.application.data.VideoEntry;
 import com.videovillage.application.http.HttpServerConnection;
 import com.videovillage.application.video.VideoListFragment;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.protocol.HTTP;
-import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
@@ -39,20 +31,18 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
     private ProgressDialog progress;
     private String urlString;
     private VideoListFragment listFragment;
+    private String responseString;
 
     @Override
     protected String doInBackground(String... params) {
-        DefaultHttpClient httpClient = HttpServerConnection.getInstance();
-        String responseString = null;
-        urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + params[0] + "&key=" + Constant.YOUTUBE_SERVER_API_KET + "&maxResults=10";
+        urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + params[0] + "&key=" + Constant.YOUTUBE_SERVER_API_KET + "&maxResults=6";
 
         try {
-            HttpGet httpGet = new HttpGet(urlString);
+            HttpServerConnection conn = new HttpServerConnection(urlString);
 
-            HttpResponse response = httpClient.execute(httpGet);
-            responseString = EntityUtils.toString(response.getEntity(), HTTP.UTF_8);
+            responseString = conn.getJSONString();
 
-            Log.d("DataGetThread", responseString);
+            Log.d("responseString", "" + responseString);
 
             JSONObject object = new JSONObject(responseString);
             JSONArray jarray = new JSONArray(object.getString("items"));
@@ -74,25 +64,19 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
 
                 DataManager.getDataManager().getVideoEntry().add(new VideoEntry(title, videoId, publishedAt));
             }
-
-            Collections.sort(DataManager.getDataManager().getVideoEntry(), new Comparator<VideoEntry>() {
-                @Override
-                public int compare(VideoEntry v1, VideoEntry v2) {
-                    return v2.getDate().compareTo(v1.getDate());
-                }
-            });
-        } catch (ClientProtocolException e) {
-            Log.e("ClientProtocolException", e.getLocalizedMessage());
-            e.printStackTrace();
-        } catch (IOException e) {
-            Log.e("IOException", e.getLocalizedMessage());
-            e.printStackTrace();
         } catch (JSONException e) {
             Log.e("JSONException", e.getLocalizedMessage());
             e.printStackTrace();
         } catch (ParseException e) {
             e.printStackTrace();
         }
+
+        Collections.sort(DataManager.getDataManager().getVideoEntry(), new Comparator<VideoEntry>() {
+            @Override
+            public int compare(VideoEntry v1, VideoEntry v2) {
+                return v2.getDate().compareTo(v1.getDate());
+            }
+        });
 
         return responseString;
     }
