@@ -1,13 +1,12 @@
 package com.videovillage.application.mainactivity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -44,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements OnFullscreenListe
     private VideoListFragment listFragment;
     private AsyncTask<String, Integer, String> task;
     private AQuery aq;
-    private String[] navItems = {"망가녀 Mangganyeo", "남욱이의 웃기는 일상", "HANA 김하나", "귄펭 GUINPEN",
+    private String[] navItems = {"망가녀 Mangganyeo", "남욱이의 욱기는 일상", "HANA 김하나", "귄펭 GUINPEN",
             "가랏 혜수몬", "맹채연구소", "안재억", "0zoo 영주", "진이 유튜브", "채르니 Chaerny", "공대생 변승주",
             "여정을 떠난 여정", "공대언니 Engin2ring_girl", "예쁘린", "신별 ShinByul", "이루리 ILULIY",
             "비디오빌리지", "걸스빌리지", "보이즈빌리지"};

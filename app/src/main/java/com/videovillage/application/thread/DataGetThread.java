@@ -23,6 +23,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by secret on 8/28/16.
@@ -60,9 +67,20 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
                 String snippet = jObject.getString("snippet");
                 jsonObject = new JSONObject(snippet);
                 String title = jsonObject.getString("title");
+                String date = jsonObject.getString("publishedAt");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.s'Z'", Locale.KOREAN);
+                Date publishedAt = sdf.parse(date);
+                Log.i("StringDate", "" + publishedAt);
 
-                DataManager.getDataManager().getVideoEntry().add(new VideoEntry(title, videoId));
+                DataManager.getDataManager().getVideoEntry().add(new VideoEntry(title, videoId, publishedAt));
             }
+
+            Collections.sort(DataManager.getDataManager().getVideoEntry(), new Comparator<VideoEntry>() {
+                @Override
+                public int compare(VideoEntry v1, VideoEntry v2) {
+                    return v2.getDate().compareTo(v1.getDate());
+                }
+            });
         } catch (ClientProtocolException e) {
             Log.e("ClientProtocolException", e.getLocalizedMessage());
             e.printStackTrace();
@@ -71,6 +89,8 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
             e.printStackTrace();
         } catch (JSONException e) {
             Log.e("JSONException", e.getLocalizedMessage());
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
 
