@@ -1,35 +1,10 @@
 package com.videovillage.application.mainactivity;
 
-
-/*
- * Copyright 2012 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewPropertyAnimator;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.androidquery.AQuery;
@@ -41,14 +16,10 @@ import com.videovillage.application.R;
 import com.videovillage.application.constant.Constant;
 import com.videovillage.application.data.DataManager;
 import com.videovillage.application.thread.DataGetThread;
-import com.videovillage.application.video.VideoFragment;
 import com.videovillage.application.video.VideoListFragment;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 /**
  * A sample Activity showing how to manage multiple YouTubeThumbnailViews in an adapter for display
@@ -60,37 +31,20 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 
 public class MainActivity extends Activity implements OnFullscreenListener {
     private VideoListFragment listFragment;
-    private VideoFragment videoFragment;
-
-    private View videoBox;
-    private View closeButton;
-
-    private boolean isFullscreen;
-
     private AsyncTask<String, Integer, String> task;
-
     private AQuery aq;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
+
         TypefaceProvider.registerDefaultIconSets();
         ButterKnife.bind(this);
 
         listFragment = (VideoListFragment) getFragmentManager().findFragmentById(R.id.list_fragment);
-        videoFragment =
-                (VideoFragment) getFragmentManager().findFragmentById(R.id.video_fragment_container);
-
-        videoBox = findViewById(R.id.video_box);
-        closeButton = findViewById(R.id.close_button);
-
-        videoBox.setVisibility(View.INVISIBLE);
 
         aq = new AQuery(this);
-
-        layout();
 
         checkYouTubeApi();
     }
@@ -132,96 +86,10 @@ public class MainActivity extends Activity implements OnFullscreenListener {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-
-        layout();
     }
 
     @Override
     public void onFullscreen(boolean isFullscreen) {
-        this.isFullscreen = isFullscreen;
-
-        layout();
-    }
-
-    /**
-     * Sets up the layout programatically for the three different states. Portrait, landscape or
-     * fullscreen+landscape. This has to be done programmatically because we handle the orientation
-     * changes ourselves in order to get fluent fullscreen transitions, so the xml layout resources
-     * do not get reloaded.
-     */
-    private void layout() {
-        boolean isPortrait =
-                getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
-
-        listFragment.getView().setVisibility(isFullscreen ? View.GONE : View.VISIBLE);
-        listFragment.setLabelVisibility(isPortrait);
-        closeButton.setVisibility(isPortrait ? View.VISIBLE : View.GONE);
-
-        if (isFullscreen) {
-            videoBox.setTranslationY(0); // Reset any translation that was applied in portrait.
-            setLayoutSize(videoFragment.getView(), MATCH_PARENT, MATCH_PARENT);
-            setLayoutSizeAndGravity(videoBox, MATCH_PARENT, MATCH_PARENT, Gravity.TOP | Gravity.LEFT);
-        } else if (isPortrait) {
-            setLayoutSize(listFragment.getView(), MATCH_PARENT, MATCH_PARENT);
-            setLayoutSize(videoFragment.getView(), MATCH_PARENT, WRAP_CONTENT);
-            setLayoutSizeAndGravity(videoBox, MATCH_PARENT, WRAP_CONTENT, Gravity.BOTTOM);
-        } else {
-            videoBox.setTranslationY(0); // Reset any translation that was applied in portrait.
-            int screenWidth = dpToPx(getResources().getConfiguration().screenWidthDp);
-            setLayoutSize(listFragment.getView(), screenWidth / 4, MATCH_PARENT);
-            int videoWidth = screenWidth - screenWidth / 4 - dpToPx(Constant.LANDSCAPE_VIDEO_PADDING_DP);
-            setLayoutSize(videoFragment.getView(), videoWidth, WRAP_CONTENT);
-            setLayoutSizeAndGravity(videoBox, videoWidth, WRAP_CONTENT,
-                    Gravity.RIGHT | Gravity.CENTER_VERTICAL);
-        }
-    }
-
-    public void onClickClose(@SuppressWarnings("unused") View view) {
-        listFragment.getListView().clearChoices();
-        listFragment.getListView().requestLayout();
-        videoFragment.pause();
-        ViewPropertyAnimator animator = videoBox.animate()
-                .translationYBy(videoBox.getHeight())
-                .setDuration(Constant.ANIMATION_DURATION_MILLIS);
-        runOnAnimationEnd(animator, new Runnable() {
-            @Override
-            public void run() {
-                videoBox.setVisibility(View.INVISIBLE);
-            }
-        });
-    }
-
-    private void runOnAnimationEnd(ViewPropertyAnimator animator, final Runnable runnable) {
-        if (Build.VERSION.SDK_INT >= 16) {
-            animator.withEndAction(runnable);
-        } else {
-            animator.setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    runnable.run();
-                }
-            });
-        }
-    }
-
-    // Utility methods for layouting.
-
-    private int dpToPx(int dp) {
-        return (int) (dp * getResources().getDisplayMetrics().density + 0.5f);
-    }
-
-    private static void setLayoutSize(View view, int width, int height) {
-        LayoutParams params = view.getLayoutParams();
-        params.width = width;
-        params.height = height;
-        view.setLayoutParams(params);
-    }
-
-    private static void setLayoutSizeAndGravity(View view, int width, int height, int gravity) {
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) view.getLayoutParams();
-        params.width = width;
-        params.height = height;
-        params.gravity = gravity;
-        view.setLayoutParams(params);
+//        this.isFullscreen = isFullscreen;
     }
 }

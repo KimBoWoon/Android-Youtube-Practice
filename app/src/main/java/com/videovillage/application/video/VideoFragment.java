@@ -55,7 +55,7 @@ public final class VideoFragment extends YouTubePlayerFragment
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean restored) {
         this.player = player;
         player.addFullscreenControlFlag(YouTubePlayer.FULLSCREEN_FLAG_CUSTOM_LAYOUT);
-        player.setOnFullscreenListener((MainActivity) getActivity());
+//        player.setOnFullscreenListener((MainActivity) getActivity());
         if (!restored && videoId != null) {
             player.cueVideo(videoId);
         }
@@ -65,5 +65,4 @@ public final class VideoFragment extends YouTubePlayerFragment
     public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult result) {
         this.player = null;
     }
-
 }
