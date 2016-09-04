@@ -12,4 +12,5 @@
     <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
 
     <string name="video_search_button_text">search</string>
+    <string name="video_play_text">영상 재생</string>
 </resources>
