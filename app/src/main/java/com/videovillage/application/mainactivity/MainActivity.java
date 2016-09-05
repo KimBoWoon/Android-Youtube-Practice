@@ -39,7 +39,7 @@ import butterknife.OnClick;
  * rebuffering.
  */
 
-public class MainActivity extends AppCompatActivity implements OnFullscreenListener {
+public class MainActivity extends AppCompatActivity {
     private VideoListFragment listFragment;
     private AsyncTask<String, Integer, String> task;
     private AQuery aq;
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements OnFullscreenListe
         aq = new AQuery(this);
 
         lvNavList = (ListView) findViewById(R.id.lv_activity_main_nav_list);
-        flContainer = (LinearLayout) findViewById(R.id.main_content);
+//        flContainer = (LinearLayout) findViewById(R.id.main_content);
         Arrays.sort(navItems);
 
         lvNavList.setAdapter(
@@ -116,19 +116,19 @@ public class MainActivity extends AppCompatActivity implements OnFullscreenListe
         return dtToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
-    @OnClick(R.id.video_name_submit)
-    public void videoSearch() {
-        String videoName = aq.id(R.id.video_name).getEditText().getText().toString();
-
-        if (videoName.length() == 0)
-            Toast.makeText(getApplicationContext(), "검색어를 입력해주세요!", Toast.LENGTH_SHORT).show();
-        else {
-            videoName = videoName.replace(" ", "%20");
-            DataManager.getDataManager().getVideoEntry().clear();
-            task = new DataGetThread(MainActivity.this, listFragment);
-            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, videoName);
-        }
-    }
+//    @OnClick(R.id.video_name_submit)
+//    public void videoSearch() {
+//        String videoName = aq.id(R.id.video_name).getEditText().getTitle().toString();
+//
+//        if (videoName.length() == 0)
+//            Toast.makeText(getApplicationContext(), "검색어를 입력해주세요!", Toast.LENGTH_SHORT).show();
+//        else {
+//            videoName = videoName.replace(" ", "%20");
+//            DataManager.getDataManager().getVideoEntry().clear();
+//            task = new DataGetThread(MainActivity.this, listFragment);
+//            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, videoName);
+//        }
+//    }
 
     private void checkYouTubeApi() {
         YouTubeInitializationResult errorReason =
@@ -154,10 +154,5 @@ public class MainActivity extends AppCompatActivity implements OnFullscreenListe
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         dtToggle.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    public void onFullscreen(boolean isFullscreen) {
-//        this.isFullscreen = isFullscreen;
     }
 }

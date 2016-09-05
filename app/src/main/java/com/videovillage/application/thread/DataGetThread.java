@@ -56,13 +56,16 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
 
                 String snippet = jObject.getString("snippet");
                 jsonObject = new JSONObject(snippet);
+
                 String title = jsonObject.getString("title");
+
                 String date = jsonObject.getString("publishedAt");
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.s'Z'", Locale.KOREAN);
                 Date publishedAt = sdf.parse(date);
-                Log.i("StringDate", "" + publishedAt);
 
-                DataManager.getDataManager().getVideoEntry().add(new VideoEntry(title, videoId, publishedAt));
+                String description = jsonObject.getString("description");
+
+                DataManager.getDataManager().getVideoEntry().add(new VideoEntry(title, videoId, publishedAt, description));
             }
         } catch (JSONException e) {
             Log.e("JSONException", e.getLocalizedMessage());
