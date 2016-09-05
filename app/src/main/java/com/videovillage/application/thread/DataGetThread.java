@@ -35,7 +35,7 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + params[0] + "&key=" + Constant.YOUTUBE_SERVER_API_KET + "&maxResults=6";
+        urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + params[0] + "&key=" + Constant.YOUTUBE_SERVER_API_KET + "&maxResults=11";
 
         try {
             HttpServerConnection conn = new HttpServerConnection(urlString);
