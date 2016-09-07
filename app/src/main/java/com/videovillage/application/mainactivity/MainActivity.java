@@ -19,17 +19,15 @@ import com.androidquery.AQuery;
 import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.google.android.youtube.player.YouTubeApiServiceUtil;
 import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer.OnFullscreenListener;
 import com.videovillage.application.R;
 import com.videovillage.application.constant.Constant;
 import com.videovillage.application.data.DataManager;
-import com.videovillage.application.thread.DataGetThread;
+import com.videovillage.application.thread.VideosSearchThread;
 import com.videovillage.application.video.VideoListFragment;
 
 import java.util.Arrays;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * A sample Activity showing how to manage multiple YouTubeThumbnailViews in an adapter for display
@@ -99,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
             videoName = videoName.replace(" ", "%20");
             DataManager.getDataManager().getVideoEntry().clear();
-            task = new DataGetThread(MainActivity.this, listFragment);
+            task = new VideosSearchThread(MainActivity.this, listFragment);
             task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, videoName);
 
             dlDrawer.closeDrawer(lvNavList);
@@ -125,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
 //        else {
 //            videoName = videoName.replace(" ", "%20");
 //            DataManager.getDataManager().getVideoEntry().clear();
-//            task = new DataGetThread(MainActivity.this, listFragment);
+//            task = new VideosSearchThread(MainActivity.this, listFragment);
 //            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, videoName);
 //        }
 //    }

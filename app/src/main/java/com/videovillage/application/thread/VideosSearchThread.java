@@ -26,7 +26,7 @@ import java.util.Locale;
 /**
  * Created by secret on 8/28/16.
  */
-public class DataGetThread extends AsyncTask<String, Integer, String> {
+public class VideosSearchThread extends AsyncTask<String, Integer, String> {
     private Context context;
     private ProgressDialog progress;
     private String urlString;
@@ -35,7 +35,7 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + params[0] + "&key=" + Constant.YOUTUBE_SERVER_API_KET + "&maxResults=11";
+        urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + params[0] + "&fields=items/snippet/title,items/snippet/description,items/snippet/publishedAt,items/id/videoId&key=" + Constant.YOUTUBE_SERVER_API_KET + "&maxResults=6";
 
         try {
             HttpServerConnection conn = new HttpServerConnection(urlString);
@@ -84,7 +84,7 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
         return responseString;
     }
 
-    public DataGetThread(Context context, VideoListFragment listFragment) {
+    public VideosSearchThread(Context context, VideoListFragment listFragment) {
         super();
         this.context = context;
         this.listFragment = listFragment;

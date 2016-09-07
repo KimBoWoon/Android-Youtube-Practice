@@ -54,7 +54,6 @@ public final class VideoFragment extends YouTubePlayerFragment
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean restored) {
         this.player = player;
-        player.addFullscreenControlFlag(YouTubePlayer.FULLSCREEN_FLAG_CUSTOM_LAYOUT);
         player.setOnFullscreenListener(this);
         if (!restored && videoId != null) {
             player.cueVideo(videoId);
@@ -69,5 +68,7 @@ public final class VideoFragment extends YouTubePlayerFragment
     @Override
     public void onFullscreen(boolean isFullscreen) {
         this.isFullscreen = isFullscreen;
+
+        player.play();
     }
 }

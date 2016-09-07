@@ -6,7 +6,9 @@ import android.os.Bundle;
 
 import com.androidquery.AQuery;
 import com.videovillage.application.R;
+import com.videovillage.application.data.DataManager;
 import com.videovillage.application.data.VideoEntry;
+import com.videovillage.application.thread.VideoSearchThread;
 
 /**
  * Created by secret on 9/4/16.
@@ -26,6 +28,8 @@ public class VideoPlayActivity extends Activity {
                 (VideoFragment) getFragmentManager().findFragmentById(R.id.video_fragment_container);
         videoFragment.setVideoId(videoEntry.getVideoId());
 
-        aq.id(R.id.video_description_text).text(videoEntry.getDescription());
+        VideoSearchThread videoSearchThread = new VideoSearchThread(videoEntry.getVideoId());
+
+        aq.id(R.id.video_description_text).text(DataManager.getDataManager().getVideoInfo().getDescription());
     }
 }
