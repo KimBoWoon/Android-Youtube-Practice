@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 
 import com.androidquery.AQuery;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -69,6 +70,18 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
     }
 
     @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+        else {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        }
+    }
+
+    @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean restored) {
         this.player = player;
         player.setOnFullscreenListener(this);
@@ -85,10 +98,5 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
     @Override
     public void onFullscreen(boolean isFullscreen) {
         this.isFullscreen = isFullscreen;
-
-        if (isFullscreen)
-            player.play();
-        else
-            player.play();
     }
 }
