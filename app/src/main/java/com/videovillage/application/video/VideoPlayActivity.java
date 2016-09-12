@@ -1,7 +1,11 @@
 package com.videovillage.application.video;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.androidquery.AQuery;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -21,12 +25,14 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
     private YouTubePlayerView playerView;
     private String videoId;
     private boolean isFullscreen;
-    private AQuery aq = new AQuery(this);
+    private AQuery aq;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.video_play_layout);
+
+        aq = new AQuery(this);
 
         Intent intent = getIntent();
         VideoEntry videoEntry = (VideoEntry) intent.getSerializableExtra("VideoEntry");
@@ -62,12 +68,6 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
         }
     }
 
-    public void pause() {
-        if (player != null) {
-            player.pause();
-        }
-    }
-
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean restored) {
         this.player = player;
@@ -85,5 +85,10 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
     @Override
     public void onFullscreen(boolean isFullscreen) {
         this.isFullscreen = isFullscreen;
+
+        if (isFullscreen)
+            player.play();
+        else
+            player.play();
     }
 }
