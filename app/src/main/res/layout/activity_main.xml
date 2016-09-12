@@ -21,33 +21,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/main_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <!--<LinearLayout-->
+        <!--android:id="@+id/main_content"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
 
-        <com.beardedhen.androidbootstrap.BootstrapEditText
-            android:id="@+id/video_name"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:inputType="text"
-            app:bootstrapBrand="info"
-            app:bootstrapSize="lg"
-            app:roundedCorners="true" />
+        <!--<com.beardedhen.androidbootstrap.BootstrapEditText-->
+            <!--android:id="@+id/video_name"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="2"-->
+            <!--android:inputType="title"-->
+            <!--app:bootstrapBrand="info"-->
+            <!--app:bootstrapSize="lg"-->
+            <!--app:roundedCorners="true" />-->
 
-        <com.beardedhen.androidbootstrap.BootstrapButton
-            android:id="@+id/video_name_submit"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/video_search_button_text"
-            app:bootstrapBrand="primary"
-            app:bootstrapSize="xl"
-            app:buttonMode="regular"
-            app:roundedCorners="true" />
-    </LinearLayout>
+        <!--<com.beardedhen.androidbootstrap.BootstrapButton-->
+            <!--android:id="@+id/video_name_submit"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:title="@string/video_search_button_text"-->
+            <!--app:bootstrapBrand="primary"-->
+            <!--app:bootstrapSize="xl"-->
+            <!--app:buttonMode="regular"-->
+            <!--app:roundedCorners="true" />-->
+    <!--</LinearLayout>-->
 
     <fragment
         android:id="@+id/list_fragment"

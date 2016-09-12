@@ -29,7 +29,6 @@ import java.util.Map;
  * destroyed it releases all the loaders.
  */
 public class PageAdapter extends BaseAdapter {
-
     private final List<VideoEntry> entries;
     private final List<View> entryViews;
     private final Map<YouTubeThumbnailView, YouTubeThumbnailLoader> thumbnailViewToLoaderMap;
@@ -103,8 +102,8 @@ public class PageAdapter extends BaseAdapter {
                 loader.setVideo(entry.getVideoId());
             }
         }
-        TextView label = ((TextView) view.findViewById(R.id.text));
-        label.setText(entry.getText());
+        TextView label = ((TextView) view.findViewById(R.id.video_title));
+        label.setText(entry.getTitle());
         label.setVisibility(labelsVisible ? View.VISIBLE : View.GONE);
         return view;
     }

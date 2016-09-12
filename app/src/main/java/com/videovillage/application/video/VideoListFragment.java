@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import com.videovillage.application.adapter.PageAdapter;
 import com.videovillage.application.data.DataManager;
+import com.videovillage.application.data.VideoEntry;
 
 /**
  * Created by secret on 8/27/16.
@@ -35,10 +36,10 @@ public final class VideoListFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-        String videoId = DataManager.getDataManager().getVideoEntry().get(position).getVideoId();
+        VideoEntry videoEntry = DataManager.getDataManager().getVideoEntry().get(position);
 
         Intent videoPlay = new Intent(getActivity(), VideoPlayActivity.class);
-        videoPlay.putExtra("videoID", videoId);
+        videoPlay.putExtra("VideoEntry", videoEntry);
         startActivity(videoPlay);
     }
 

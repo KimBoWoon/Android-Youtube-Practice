@@ -7,7 +7,7 @@
     <dimen name="bootstrap_button_default_corner_radius">4dp</dimen>
     <dimen name="bootstrap_button_default_edge_width">1dp</dimen>
 
-    <!-- Default edit text size -->
+    <!-- Default edit title size -->
     <dimen name="bootstrap_edit_text_default_font_size">14sp</dimen>
     <dimen name="bootstrap_edit_text_vert_padding">8dp</dimen>
     <dimen name="bootstrap_edit_text_hori_padding">5.75dp</dimen>

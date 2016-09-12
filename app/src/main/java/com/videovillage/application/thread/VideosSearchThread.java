@@ -26,7 +26,7 @@ import java.util.Locale;
 /**
  * Created by secret on 8/28/16.
  */
-public class DataGetThread extends AsyncTask<String, Integer, String> {
+public class VideosSearchThread extends AsyncTask<String, Integer, String> {
     private Context context;
     private ProgressDialog progress;
     private String urlString;
@@ -35,7 +35,9 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + params[0] + "&key=" + Constant.YOUTUBE_SERVER_API_KET + "&maxResults=6";
+        urlString = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=" + params[0] + "&maxResults=10&order=date&fields=items/snippet/title,items/snippet/publishedAt,items/id/videoId&type=video&key=" + Constant.YOUTUBE_SERVER_API_KET;
+//        urlString = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=" + params[0] + "&maxResults=10&order=date&fields=items/snippet/title,items/snippet/description,items/snippet/publishedAt,items/id/videoId&type=video&key=" + Constant.YOUTUBE_SERVER_API_KET;
+//        urlString = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=" + params[0] + "&maxResults=10&order=date&key=" + Constant.YOUTUBE_SERVER_API_KET;
 
         try {
             HttpServerConnection conn = new HttpServerConnection(urlString);
@@ -47,7 +49,7 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
             JSONObject object = new JSONObject(responseString);
             JSONArray jarray = new JSONArray(object.getString("items"));
 
-            for (int i = 1; i < jarray.length(); i++) {
+            for (int i = 0; i < jarray.length(); i++) {
                 JSONObject jObject = jarray.getJSONObject(i);
 
                 String id = jObject.getString("id");
@@ -56,13 +58,16 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
 
                 String snippet = jObject.getString("snippet");
                 jsonObject = new JSONObject(snippet);
+
                 String title = jsonObject.getString("title");
+
                 String date = jsonObject.getString("publishedAt");
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.s'Z'", Locale.KOREAN);
                 Date publishedAt = sdf.parse(date);
-                Log.i("StringDate", "" + publishedAt);
 
-                DataManager.getDataManager().getVideoEntry().add(new VideoEntry(title, videoId, publishedAt));
+//                String description = jsonObject.getString("description");
+
+                DataManager.getDataManager().getVideoEntry().add(new VideoEntry(title, videoId, publishedAt, ""));
             }
         } catch (JSONException e) {
             Log.e("JSONException", e.getLocalizedMessage());
@@ -81,7 +86,7 @@ public class DataGetThread extends AsyncTask<String, Integer, String> {
         return responseString;
     }
 
-    public DataGetThread(Context context, VideoListFragment listFragment) {
+    public VideosSearchThread(Context context, VideoListFragment listFragment) {
         super();
         this.context = context;
         this.listFragment = listFragment;

@@ -7,6 +7,7 @@ import java.util.ArrayList;
  */
 public class DataManager {
     private ArrayList<VideoEntry> videoEntry = new ArrayList<VideoEntry>();
+    private VideoEntry videoInfo;
     private static DataManager dataManager = new DataManager();
 
     public DataManager() {
@@ -15,6 +16,14 @@ public class DataManager {
 
     public ArrayList<VideoEntry> getVideoEntry() {
         return videoEntry;
+    }
+
+    public VideoEntry getVideoInfo() {
+        return videoInfo;
+    }
+
+    public void setVideoInfo(VideoEntry videoInfo) {
+        this.videoInfo = videoInfo;
     }
 
     public static DataManager getDataManager() {
