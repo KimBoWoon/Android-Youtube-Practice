@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <fragment
-        android:id="@+id/video_fragment_container"
-        class="com.videovillage.application.video.VideoFragment"
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/video_player_youtube_player"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
