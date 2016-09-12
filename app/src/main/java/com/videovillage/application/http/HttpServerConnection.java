@@ -40,7 +40,8 @@ public class HttpServerConnection {
                 String line;
 
                 while ((line = br.readLine()) != null) {
-                    responseString.append(line).append("\n");
+//                    responseString.append(line).append("\n");
+                    responseString.append(line.trim());
                 }
                 br.close();
             }

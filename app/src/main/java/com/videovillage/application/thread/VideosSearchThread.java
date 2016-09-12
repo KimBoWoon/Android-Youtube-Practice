@@ -35,7 +35,9 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + params[0] + "&fields=items/snippet/title,items/snippet/description,items/snippet/publishedAt,items/id/videoId&key=" + Constant.YOUTUBE_SERVER_API_KET + "&maxResults=6";
+        urlString = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=" + params[0] + "&maxResults=10&order=date&fields=items/snippet/title,items/snippet/publishedAt,items/id/videoId&type=video&key=" + Constant.YOUTUBE_SERVER_API_KET;
+//        urlString = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=" + params[0] + "&maxResults=10&order=date&fields=items/snippet/title,items/snippet/description,items/snippet/publishedAt,items/id/videoId&type=video&key=" + Constant.YOUTUBE_SERVER_API_KET;
+//        urlString = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=" + params[0] + "&maxResults=10&order=date&key=" + Constant.YOUTUBE_SERVER_API_KET;
 
         try {
             HttpServerConnection conn = new HttpServerConnection(urlString);
@@ -47,7 +49,7 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
             JSONObject object = new JSONObject(responseString);
             JSONArray jarray = new JSONArray(object.getString("items"));
 
-            for (int i = 1; i < jarray.length(); i++) {
+            for (int i = 0; i < jarray.length(); i++) {
                 JSONObject jObject = jarray.getJSONObject(i);
 
                 String id = jObject.getString("id");
@@ -63,9 +65,9 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.s'Z'", Locale.KOREAN);
                 Date publishedAt = sdf.parse(date);
 
-                String description = jsonObject.getString("description");
+//                String description = jsonObject.getString("description");
 
-                DataManager.getDataManager().getVideoEntry().add(new VideoEntry(title, videoId, publishedAt, description));
+                DataManager.getDataManager().getVideoEntry().add(new VideoEntry(title, videoId, publishedAt, ""));
             }
         } catch (JSONException e) {
             Log.e("JSONException", e.getLocalizedMessage());
