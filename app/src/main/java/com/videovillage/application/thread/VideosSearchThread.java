@@ -9,7 +9,7 @@ import android.util.Log;
 import com.videovillage.application.constant.Constant;
 import com.videovillage.application.data.DataManager;
 import com.videovillage.application.data.VideoEntry;
-import com.videovillage.application.http.HttpServerConnection;
+import com.videovillage.application.http.HttpPresenter;
 import com.videovillage.application.video.VideoListFragment;
 
 import org.json.JSONArray;
@@ -36,11 +36,10 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
     @Override
     protected String doInBackground(String... params) {
         urlString = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=" + params[0] + "&maxResults=10&order=date&fields=items/snippet/title,items/snippet/publishedAt,items/id/videoId&type=video&key=" + Constant.YOUTUBE_SERVER_API_KET;
-//        urlString = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=" + params[0] + "&maxResults=10&order=date&fields=items/snippet/title,items/snippet/description,items/snippet/publishedAt,items/id/videoId&type=video&key=" + Constant.YOUTUBE_SERVER_API_KET;
-//        urlString = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=" + params[0] + "&maxResults=10&order=date&key=" + Constant.YOUTUBE_SERVER_API_KET;
 
         try {
-            HttpServerConnection conn = new HttpServerConnection(urlString);
+            HttpPresenter conn = new HttpPresenter();
+            conn.initHttpConnection(urlString);
 
             responseString = conn.getJSONString();
 

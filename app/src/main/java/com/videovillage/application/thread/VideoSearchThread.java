@@ -5,7 +5,7 @@ import android.util.Log;
 import com.videovillage.application.constant.Constant;
 import com.videovillage.application.data.DataManager;
 import com.videovillage.application.data.VideoEntry;
-import com.videovillage.application.http.HttpServerConnection;
+import com.videovillage.application.http.HttpPresenter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -46,7 +46,8 @@ public class VideoSearchThread {
         }
 
         public void run() {
-            HttpServerConnection conn = new HttpServerConnection(urlString);
+            HttpPresenter conn = new HttpPresenter();
+            conn.initHttpConnection(urlString);
 
             responseString = conn.getJSONString();
             Log.i("VideoSearchThread", responseString);

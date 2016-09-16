@@ -21,7 +21,6 @@ import com.google.android.youtube.player.YouTubeApiServiceUtil;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.videovillage.application.R;
 import com.videovillage.application.constant.Constant;
-import com.videovillage.application.data.DataManager;
 import com.videovillage.application.thread.VideosSearchThread;
 import com.videovillage.application.video.VideoListFragment;
 
@@ -38,31 +37,125 @@ import butterknife.ButterKnife;
  * rebuffering.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainContract.View, ListView.OnItemClickListener {
     private VideoListFragment listFragment;
-    private AsyncTask<String, Integer, String> task;
     private AQuery aq;
-    private HashMap<String, String> youtubeSubscribeList = new HashMap<String, String>();
-    private String[] navItems = {"망가녀 Mangganyeo", "남욱이의 욱기는 일상", "HANA 김하나", "귄펭 GUINPEN",
-            "가랏 혜수몬", "맹채연구소", "안재억", "0zoo 영주", "진이 유튜브", "채르니 Chaerny", "공대생 변승주",
-            "여정을 떠난 여정", "공대언니 Engin2ring_girl", "예쁘린", "신별 ShinByul", "이루리 ILULIY",
-            "비디오빌리지", "걸스빌리지", "보이즈빌리지", "욱망나생", "이채은 CHAEEUN", "재인 아카데미 (Jaein Academy)",
-            "큐피디", "엘피디", "김피디", "범피디", "정아TV", "JK ENT", "주", "BEAN", "유소 (YUSO)", "Hemtube (햄튜브)"};
+    private HashMap<String, String> youtubeSubscribeList;
+    private String[] navItems;
     private ListView lvNavList;
-    private LinearLayout flContainer;
     private DrawerLayout dlDrawer;
     private ActionBarDrawerToggle dtToggle;
+
+    private MainContract.UserAction mMainPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initView();
+
+        youtubeChannelInsert();
+
+        initActionbar();
+
+        checkYouTubeApi();
+    }
+
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        dtToggle.syncState();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return dtToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
+    }
+
+    private void checkYouTubeApi() {
+        YouTubeInitializationResult errorReason =
+                YouTubeApiServiceUtil.isYouTubeApiServiceAvailable(this);
+        if (errorReason.isUserRecoverableError()) {
+            errorReason.getErrorDialog(this, Constant.RECOVERY_DIALOG_REQUEST).show();
+        } else if (errorReason != YouTubeInitializationResult.SUCCESS) {
+            String errorMessage =
+                    String.format(getString(R.string.error_player), errorReason.toString());
+            Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == Constant.RECOVERY_DIALOG_REQUEST) {
+            recreate();
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        dtToggle.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
+        String videoName = youtubeSubscribeList.get(navItems[position]);
+
+        videoName = mMainPresenter.choiceYoutubeChannel(videoName);
+        new VideosSearchThread(MainActivity.this, listFragment).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, videoName);
+
+        dlDrawer.closeDrawer(lvNavList);
+    }
+
+    @Override
+    public void initView() {
+        mMainPresenter = new MainPresenter(this);
+
         TypefaceProvider.registerDefaultIconSets();
         ButterKnife.bind(this);
 
         aq = new AQuery(this);
 
+        youtubeSubscribeList = new HashMap<String, String>();
+
+        navItems = new String[]{"망가녀 Mangganyeo", "남욱이의 욱기는 일상", "HANA 김하나", "귄펭 GUINPEN",
+                "가랏 혜수몬", "맹채연구소", "안재억", "0zoo 영주", "진이 유튜브", "채르니 Chaerny", "공대생 변승주",
+                "여정을 떠난 여정", "공대언니 Engin2ring_girl", "예쁘린", "신별 ShinByul", "이루리 ILULIY",
+                "비디오빌리지", "걸스빌리지", "보이즈빌리지", "욱망나생", "이채은 CHAEEUN", "재인 아카데미 (Jaein Academy)",
+                "큐피디", "엘피디", "김피디", "범피디", "정아TV", "JK ENT", "주", "BEAN", "유소 (YUSO)", "Hemtube (햄튜브)"};
+
+        listFragment = (VideoListFragment) getFragmentManager().findFragmentById(R.id.list_fragment);
+
+        lvNavList = (ListView) findViewById(R.id.lv_activity_main_nav_list);
+        Arrays.sort(navItems);
+
+        lvNavList.setAdapter(
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, navItems));
+        lvNavList.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void initActionbar() {
+        dlDrawer = (DrawerLayout) findViewById(R.id.container);
+        dtToggle = new ActionBarDrawerToggle(this, dlDrawer, R.string.open_drawer, R.string.close_drawer) {
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+
+        };
+        dlDrawer.setDrawerListener(dtToggle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    @Override
+    public void youtubeChannelInsert() {
         youtubeSubscribeList.put("망가녀 Mangganyeo", "UCTCYh96Ex4lRWMRg0YQvlIQ");
         youtubeSubscribeList.put("남욱이의 욱기는 일상", "UCIU2ghnE-3MMhLTlh_7hzZQ");
         youtubeSubscribeList.put("HANA 김하나", "UCfTswP_uNy_h86pUjCU410A");
@@ -95,99 +188,5 @@ public class MainActivity extends AppCompatActivity {
         youtubeSubscribeList.put("비디오빌리지", "UCENi3E1IyV0nvIIrha8GIvQ");
         youtubeSubscribeList.put("걸스빌리지", "UCedoBeDMzwnPJazRvvoOXhQ");
         youtubeSubscribeList.put("보이즈빌리지", "UCuSaFvVbK9QpZlbn8Vf34RA");
-
-        listFragment = (VideoListFragment) getFragmentManager().findFragmentById(R.id.list_fragment);
-
-        lvNavList = (ListView) findViewById(R.id.lv_activity_main_nav_list);
-//        flContainer = (LinearLayout) findViewById(R.id.main_content);
-        Arrays.sort(navItems);
-
-        lvNavList.setAdapter(
-                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, navItems));
-        lvNavList.setOnItemClickListener(new DrawerItemClickListener());
-
-        dlDrawer = (DrawerLayout) findViewById(R.id.container);
-        dtToggle = new ActionBarDrawerToggle(this, dlDrawer, R.string.open_drawer, R.string.close_drawer) {
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                super.onDrawerClosed(drawerView);
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-            }
-
-        };
-        dlDrawer.setDrawerListener(dtToggle);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        checkYouTubeApi();
-    }
-
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-//            String videoName = navItems[position];
-            String videoName = youtubeSubscribeList.get(navItems[position]);
-
-            videoName = videoName.replace(" ", "%20");
-            DataManager.getDataManager().getVideoEntry().clear();
-            task = new VideosSearchThread(MainActivity.this, listFragment);
-            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, videoName);
-
-            dlDrawer.closeDrawer(lvNavList);
-        }
-    }
-
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        dtToggle.syncState();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return dtToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
-    }
-
-//    @OnClick(R.id.video_name_submit)
-//    public void videoSearch() {
-//        String videoName = aq.id(R.id.video_name).getEditText().getTitle().toString();
-//
-//        if (videoName.length() == 0)
-//            Toast.makeText(getApplicationContext(), "검색어를 입력해주세요!", Toast.LENGTH_SHORT).show();
-//        else {
-//            videoName = videoName.replace(" ", "%20");
-//            DataManager.getDataManager().getVideoEntry().clear();
-//            task = new VideosSearchThread(MainActivity.this, listFragment);
-//            task.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, videoName);
-//        }
-//    }
-
-    private void checkYouTubeApi() {
-        YouTubeInitializationResult errorReason =
-                YouTubeApiServiceUtil.isYouTubeApiServiceAvailable(this);
-        if (errorReason.isUserRecoverableError()) {
-            errorReason.getErrorDialog(this, Constant.RECOVERY_DIALOG_REQUEST).show();
-        } else if (errorReason != YouTubeInitializationResult.SUCCESS) {
-            String errorMessage =
-                    String.format(getString(R.string.error_player), errorReason.toString());
-            Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
-        }
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Constant.RECOVERY_DIALOG_REQUEST) {
-            // Recreate the activity if user performed a recovery action
-            recreate();
-        }
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        dtToggle.onConfigurationChanged(newConfig);
     }
 }
