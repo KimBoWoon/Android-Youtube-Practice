@@ -7,13 +7,13 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.videovillage.application.R;
+import com.videovillage.application.adapter.PageAdapter;
 import com.videovillage.application.constant.Constant;
 import com.videovillage.application.data.DataManager;
 import com.videovillage.application.data.SharedStore;
 import com.videovillage.application.data.VideoEntry;
 import com.videovillage.application.http.HttpPresenter;
 import com.videovillage.application.mainactivity.MainActivity;
-import com.videovillage.application.video.VideoListFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,10 +33,9 @@ import java.util.regex.Pattern;
  */
 public class VideosSearchThread extends AsyncTask<String, Integer, String> {
     private Context context;
-//    private ProgressDialog progress;
     private ProgressBar progress;
     private String urlString;
-    private VideoListFragment listFragment;
+    private PageAdapter pageAdapter;
     private String responseString;
     private String youtubeServerKey;
 
@@ -99,10 +98,10 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
         return responseString;
     }
 
-    public VideosSearchThread(Context context, VideoListFragment listFragment) {
+    public VideosSearchThread(Context context, PageAdapter pageAdapter) {
         super();
         this.context = context;
-        this.listFragment = listFragment;
+        this.pageAdapter = pageAdapter;
     }
 
     @Override
@@ -110,39 +109,23 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
         super.onPreExecute();
         progress = (ProgressBar) ((MainActivity) context).findViewById(R.id.progress);
         progress.setVisibility(View.VISIBLE);
-//        progress = new ProgressDialog(context);
-//        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-//        progress.setTitle("데이터 수신중...");
-//        progress.setMessage("잠시만 기다려주세요...");
-//        progress.setCancelable(false);
-//        progress.setProgress(0);
-//        progress.setButton(DialogInterface.BUTTON_NEGATIVE, "취소", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                cancel(true);
-//            }
-//        });
-//        progress.show();
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         progress.setVisibility(View.GONE);
-//        progress.dismiss();
-        listFragment.getAdapter().notifyDataSetInvalidated();
+        pageAdapter.notifyDataSetChanged();
     }
 
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
-//        progress.setProgress(values[0]);
     }
 
     @Override
     protected void onCancelled() {
         super.onCancelled();
         progress.setVisibility(View.GONE);
-//        progress.dismiss();
     }
 }

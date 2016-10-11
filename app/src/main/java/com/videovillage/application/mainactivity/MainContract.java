@@ -8,6 +8,7 @@ public interface MainContract {
         void initView();
         void initActionbar();
         void youtubeChannelInsert();
+        void onListItemClick(int position);
     }
 
     interface UserAction {
