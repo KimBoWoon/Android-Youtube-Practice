@@ -41,6 +41,16 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
     protected YouTubePlayer.Provider getYouTubePlayerProvider() {
         return playerView;
     }

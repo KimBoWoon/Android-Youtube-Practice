@@ -66,6 +66,16 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         checkYouTubeApi();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         dtToggle.syncState();
