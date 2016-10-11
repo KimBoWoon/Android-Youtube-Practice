@@ -34,6 +34,7 @@ public class PageAdapter extends BaseAdapter {
     private final Map<YouTubeThumbnailView, YouTubeThumbnailLoader> thumbnailViewToLoaderMap;
     private final LayoutInflater inflater;
     private final ThumbnailListener thumbnailListener;
+    private ViewHolder holder;
 
     private boolean labelsVisible;
 
@@ -78,34 +79,35 @@ public class PageAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
         VideoEntry entry = entries.get(position);
 
-        // There are three cases here
-        if (view == null) {
-            // 1) The view has not yet been created - we need to initialize the YouTubeThumbnailView.
-            view = inflater.inflate(R.layout.video_list_item, parent, false);
-            YouTubeThumbnailView thumbnail = (YouTubeThumbnailView) view.findViewById(R.id.thumbnail);
-            thumbnail.setTag(entry.getVideoId());
-            thumbnail.initialize(Constant.YOUTUBE_ANDROID_API_KEY, thumbnailListener);
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.video_list_item, parent, false);
+
+            holder = new ViewHolder();
+            convertView.setTag(holder);
+
+            holder.thumbnail = (YouTubeThumbnailView) convertView.findViewById(R.id.thumbnail);
+            holder.videoTitle = (TextView) convertView.findViewById(R.id.video_title);
+
+            holder.thumbnail.setTag(entry.getVideoId());
+            holder.thumbnail.initialize(Constant.YOUTUBE_ANDROID_API_KEY, thumbnailListener);
         } else {
-            YouTubeThumbnailView thumbnail = (YouTubeThumbnailView) view.findViewById(R.id.thumbnail);
-            YouTubeThumbnailLoader loader = thumbnailViewToLoaderMap.get(thumbnail);
+            holder = (ViewHolder) convertView.getTag();
+            YouTubeThumbnailLoader loader = thumbnailViewToLoaderMap.get(holder.thumbnail);
+
             if (loader == null) {
-                // 2) The view is already created, and is currently being initialized. We store the
-                //    current videoId in the tag.
-                thumbnail.setTag(entry.getVideoId());
+                holder.thumbnail.setTag(entry.getVideoId());
             } else {
-                // 3) The view is already created and already initialized. Simply set the right videoId
-                //    on the loader.
-                thumbnail.setImageResource(R.drawable.loading_thumbnail);
+                holder.thumbnail.setImageResource(R.drawable.loading_thumbnail);
                 loader.setVideo(entry.getVideoId());
             }
         }
-        TextView label = ((TextView) view.findViewById(R.id.video_title));
-        label.setText(entry.getTitle());
-        label.setVisibility(labelsVisible ? View.VISIBLE : View.GONE);
-        return view;
+
+        holder.videoTitle.setText(entry.getTitle());
+        holder.videoTitle.setVisibility(labelsVisible ? View.VISIBLE : View.GONE);
+
+        return convertView;
     }
 
     private final class ThumbnailListener implements

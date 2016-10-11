@@ -7,18 +7,27 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 /**
- * Created by secret on 8/28/16.
+ * Created by secret on 9/14/16.
  */
-public class HttpServerConnection {
+public class HttpPresenter implements HttpContract.UserAction {
+    private HttpContract.View mHttpView;
+    private HttpModel mHttpModel;
+
+    private URL url;
     private HttpURLConnection conn;
     private StringBuilder responseString;
-    private URL url;
 
-    public HttpURLConnection getInstance() {
-        return conn;
+    public HttpPresenter(HttpContract.View view) {
+        this.mHttpView = view;
+        this.mHttpModel = new HttpModel();
     }
 
-    public HttpServerConnection(String urlString) {
+    public HttpPresenter() {
+        this.mHttpModel = new HttpModel();
+    }
+
+    @Override
+    public void initHttpConnection(String urlString) {
         try {
             this.url = new URL(urlString);
             this.conn = (HttpURLConnection) url.openConnection();
@@ -28,6 +37,7 @@ public class HttpServerConnection {
         }
     }
 
+    @Override
     public String getJSONString() {
         try {
             conn.setRequestMethod("GET");
@@ -40,8 +50,7 @@ public class HttpServerConnection {
                 String line;
 
                 while ((line = br.readLine()) != null) {
-//                    responseString.append(line).append("\n");
-                    responseString.append(line.trim());
+                    responseString = mHttpModel.stringAppend(responseString, line.trim());
                 }
                 br.close();
             }
