@@ -11,7 +11,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,6 +20,7 @@ import com.google.android.youtube.player.YouTubeApiServiceUtil;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.videovillage.application.R;
 import com.videovillage.application.constant.Constant;
+import com.videovillage.application.data.SharedStore;
 import com.videovillage.application.thread.VideosSearchThread;
 import com.videovillage.application.video.VideoListFragment;
 
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         YouTubeInitializationResult errorReason =
                 YouTubeApiServiceUtil.isYouTubeApiServiceAvailable(this);
         if (errorReason.isUserRecoverableError()) {
-            errorReason.getErrorDialog(this, Constant.RECOVERY_DIALOG_REQUEST).show();
+            errorReason.getErrorDialog(this, SharedStore.getInt(MainActivity.this, Constant.RECOVERY_DIALOG_REQUEST)).show();
         } else if (errorReason != YouTubeInitializationResult.SUCCESS) {
             String errorMessage =
                     String.format(getString(R.string.error_player), errorReason.toString());
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Constant.RECOVERY_DIALOG_REQUEST) {
+        if (requestCode == SharedStore.getInt(MainActivity.this, Constant.RECOVERY_DIALOG_REQUEST)) {
             recreate();
         }
     }

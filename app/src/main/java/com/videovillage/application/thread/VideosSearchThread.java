@@ -35,7 +35,7 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        urlString = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=" + params[0] + "&maxResults=10&order=date&fields=items/snippet/title,items/snippet/publishedAt,items/id/videoId&type=video&key=" + Constant.YOUTUBE_SERVER_API_KET;
+        urlString = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=" + params[0] + "&maxResults=10&order=date&fields=items/snippet/title,items/snippet/publishedAt,items/id/videoId&type=video&key=" + Constant.YOUTUBE_SERVER_API_KEY;
 
         try {
             HttpPresenter conn = new HttpPresenter();

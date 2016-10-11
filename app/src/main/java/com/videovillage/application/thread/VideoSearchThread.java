@@ -22,7 +22,7 @@ public class VideoSearchThread {
 
     public VideoSearchThread(String keyword) {
         this.keyword = keyword;
-        this.url = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + keyword + "&fields=items/snippet/title,items/snippet/description&key=" + Constant.YOUTUBE_SERVER_API_KET;
+        this.url = "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=" + keyword + "&fields=items/snippet/title,items/snippet/description&key=" + Constant.YOUTUBE_SERVER_API_KEY;
         startGetThread();
     }
 
