@@ -25,6 +25,18 @@ dependencies {
     compile project(path: ':AndroidBootstrap')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:22.2.1'
+
+    // Butter Knife
     compile 'com.jakewharton:butterknife:7.0.1'
+
+    // Android Query
     compile 'com.googlecode.android-query:android-query:0.25.9'
+
+    // Firebase
+    compile 'com.google.firebase:firebase-core:9.6.1'
+    compile 'com.google.firebase:firebase-crash:9.6.1'
+    compile 'com.google.firebase:firebase-messaging:9.6.1'
+    compile 'com.google.firebase:firebase-config:9.6.1'
 }
+
+apply plugin: 'com.google.gms.google-services'

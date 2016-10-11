@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "464206904196",
+    "firebase_url": "https://youtubeplayer-141415.firebaseio.com",
+    "project_id": "youtubeplayer-141415",
+    "storage_bucket": "youtubeplayer-141415.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464206904196:android:a06fda381bca8c71",
+        "android_client_info": {
+          "package_name": "com.videovillage.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464206904196-ja5uhss78vm9g70o2gr1e8rif662qf9k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-k_Uwx4VahNxvZRk70kYaT_Ub_KicLO0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
