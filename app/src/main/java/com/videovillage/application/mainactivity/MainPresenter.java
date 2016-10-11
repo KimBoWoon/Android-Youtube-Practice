@@ -69,10 +69,14 @@ public class MainPresenter implements MainContract.UserAction {
                     SharedStore.setString((MainActivity) mMainView,
                             Constant.YOUTUBE_SERVER_API_KEY,
                             config.getString(Constant.YOUTUBE_SERVER_API_KEY));
+                    SharedStore.setString((MainActivity) mMainView,
+                            Constant.VIDEO_SEARCH_URL,
+                            config.getString(Constant.VIDEO_SEARCH_URL));
 
                     Log.i("FCM", String.valueOf(config.getString(Constant.RECOVERY_DIALOG_REQUEST)));
                     Log.i("FCM", String.valueOf(config.getString(Constant.YOUTUBE_ANDROID_API_KEY)));
                     Log.i("FCM", String.valueOf(config.getString(Constant.YOUTUBE_SERVER_API_KEY)));
+                    Log.i("FCM", String.valueOf(config.getString(Constant.VIDEO_SEARCH_URL)));
                 }
             }
         });
