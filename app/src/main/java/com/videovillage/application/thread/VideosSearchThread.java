@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.videovillage.application.constant.Constant;
 import com.videovillage.application.data.DataManager;
+import com.videovillage.application.data.SharedStore;
 import com.videovillage.application.data.VideoEntry;
 import com.videovillage.application.http.HttpPresenter;
 import com.videovillage.application.video.VideoListFragment;
@@ -32,10 +33,14 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
     private String urlString;
     private VideoListFragment listFragment;
     private String responseString;
+    private String youtubeServerKey;
 
     @Override
     protected String doInBackground(String... params) {
-        urlString = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=" + params[0] + "&maxResults=10&order=date&fields=items/snippet/title,items/snippet/publishedAt,items/id/videoId&type=video&key=" + Constant.YOUTUBE_SERVER_API_KEY;
+        this.youtubeServerKey = SharedStore.getString(context, Constant.YOUTUBE_SERVER_API_KEY);
+        this.urlString = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId="
+                + params[0] + "&maxResults=10&order=date&fields=items/snippet/title,items/snippet/description,items/snippet/publishedAt,items/id/videoId&type=video&key="
+                + youtubeServerKey;
 
         try {
             HttpPresenter conn = new HttpPresenter();
@@ -60,13 +65,13 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
 
                 String title = jsonObject.getString("title");
 
+                String description = jsonObject.getString("description");
+
                 String date = jsonObject.getString("publishedAt");
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.s'Z'", Locale.KOREAN);
                 Date publishedAt = sdf.parse(date);
 
-//                String description = jsonObject.getString("description");
-
-                DataManager.getDataManager().getVideoEntry().add(new VideoEntry(title, videoId, publishedAt, ""));
+                DataManager.getDataManager().getVideoEntry().add(new VideoEntry(title, videoId, publishedAt, description));
             }
         } catch (JSONException e) {
             Log.e("JSONException", e.getLocalizedMessage());

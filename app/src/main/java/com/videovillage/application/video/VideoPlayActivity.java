@@ -1,11 +1,8 @@
 package com.videovillage.application.video;
 
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.WindowManager;
 
 import com.androidquery.AQuery;
@@ -14,9 +11,7 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.videovillage.application.R;
 import com.videovillage.application.constant.Constant;
-import com.videovillage.application.data.DataManager;
 import com.videovillage.application.data.VideoEntry;
-import com.videovillage.application.thread.VideoSearchThread;
 
 /**
  * Created by secret on 9/4/16.
@@ -42,9 +37,7 @@ public class VideoPlayActivity extends YouTubeFailureRecoveryActivity implements
         playerView.initialize(Constant.YOUTUBE_ANDROID_API_KEY, this);
         setVideoId(videoEntry.getVideoId());
 
-        VideoSearchThread videoSearchThread = new VideoSearchThread(videoEntry.getVideoId());
-
-        aq.id(R.id.video_description_text).text(DataManager.getDataManager().getVideoInfo().getDescription());
+        aq.id(R.id.video_description_text).text(videoEntry.getDescription());
     }
 
     @Override
