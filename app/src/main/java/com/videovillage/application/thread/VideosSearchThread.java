@@ -1,16 +1,21 @@
 package com.videovillage.application.thread;
 
-import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
+import com.androidquery.AQuery;
+import com.androidquery.callback.AjaxCallback;
+import com.videovillage.application.R;
+import com.videovillage.application.adapter.PageAdapter;
 import com.videovillage.application.constant.Constant;
 import com.videovillage.application.data.DataManager;
+import com.videovillage.application.data.Loging;
+import com.videovillage.application.data.SharedStore;
 import com.videovillage.application.data.VideoEntry;
-import com.videovillage.application.http.HttpPresenter;
-import com.videovillage.application.video.VideoListFragment;
+import com.videovillage.application.mainactivity.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,29 +27,39 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by secret on 8/28/16.
  */
 public class VideosSearchThread extends AsyncTask<String, Integer, String> {
     private Context context;
-    private ProgressDialog progress;
+    private ProgressBar progress;
     private String urlString;
-    private VideoListFragment listFragment;
+    private PageAdapter pageAdapter;
     private String responseString;
+    private String youtubeServerKey;
+    private AQuery aq;
 
     @Override
     protected String doInBackground(String... params) {
-        urlString = "https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&channelId=" + params[0] + "&maxResults=10&order=date&fields=items/snippet/title,items/snippet/publishedAt,items/id/videoId&type=video&key=" + Constant.YOUTUBE_SERVER_API_KET;
+        String url = SharedStore.getString(context, Constant.VIDEO_SEARCH_URL);
+        Pattern pattern = Pattern.compile("STRING_CHANGE");
+        Matcher matcher = pattern.matcher(url);
+
+        this.youtubeServerKey = SharedStore.getString(context, Constant.YOUTUBE_SERVER_API_KEY);
+        this.urlString = matcher.replaceFirst(params[0]) + youtubeServerKey;
+
+        Loging.i(urlString);
+
+        AjaxCallback<JSONObject> cb = new AjaxCallback<JSONObject>().url(urlString).type(JSONObject.class);
+        aq.sync(cb);
+        responseString = cb.getResult().toString();
+
+        Loging.i(responseString);
 
         try {
-            HttpPresenter conn = new HttpPresenter();
-            conn.initHttpConnection(urlString);
-
-            responseString = conn.getJSONString();
-
-            Log.d("responseString", "" + responseString);
-
             JSONObject object = new JSONObject(responseString);
             JSONArray jarray = new JSONArray(object.getString("items"));
 
@@ -60,13 +75,13 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
 
                 String title = jsonObject.getString("title");
 
+                String description = jsonObject.getString("description");
+
                 String date = jsonObject.getString("publishedAt");
                 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.s'Z'", Locale.KOREAN);
                 Date publishedAt = sdf.parse(date);
 
-//                String description = jsonObject.getString("description");
-
-                DataManager.getDataManager().getVideoEntry().add(new VideoEntry(title, videoId, publishedAt, ""));
+                DataManager.getDataManager().getVideoEntry().add(new VideoEntry(title, videoId, publishedAt, description));
             }
         } catch (JSONException e) {
             Log.e("JSONException", e.getLocalizedMessage());
@@ -85,46 +100,35 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
         return responseString;
     }
 
-    public VideosSearchThread(Context context, VideoListFragment listFragment) {
+    public VideosSearchThread(Context context, PageAdapter pageAdapter) {
         super();
         this.context = context;
-        this.listFragment = listFragment;
+        this.pageAdapter = pageAdapter;
+        this.aq = new AQuery(context);
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        progress = new ProgressDialog(context);
-        progress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-        progress.setTitle("데이터 수신중...");
-        progress.setMessage("잠시만 기다려주세요...");
-        progress.setCancelable(false);
-        progress.setProgress(0);
-        progress.setButton(DialogInterface.BUTTON_NEGATIVE, "취소", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                cancel(true);
-            }
-        });
-        progress.show();
+        progress = (ProgressBar) ((MainActivity) context).findViewById(R.id.progress);
+        progress.setVisibility(View.VISIBLE);
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        progress.dismiss();
-        listFragment.getAdapter().notifyDataSetInvalidated();
+        progress.setVisibility(View.GONE);
+        pageAdapter.notifyDataSetChanged();
     }
 
     @Override
     protected void onProgressUpdate(Integer... values) {
         super.onProgressUpdate(values);
-        progress.setProgress(values[0]);
     }
 
     @Override
     protected void onCancelled() {
         super.onCancelled();
-        progress.dismiss();
+        progress.setVisibility(View.GONE);
     }
 }

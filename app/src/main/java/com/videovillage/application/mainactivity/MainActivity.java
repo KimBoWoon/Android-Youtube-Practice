@@ -1,6 +1,9 @@
 package com.videovillage.application.mainactivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,7 +14,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -20,14 +22,19 @@ import com.beardedhen.androidbootstrap.TypefaceProvider;
 import com.google.android.youtube.player.YouTubeApiServiceUtil;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.videovillage.application.R;
+import com.videovillage.application.adapter.PageAdapter;
 import com.videovillage.application.constant.Constant;
+import com.videovillage.application.data.DataManager;
+import com.videovillage.application.data.SharedStore;
+import com.videovillage.application.data.VideoEntry;
 import com.videovillage.application.thread.VideosSearchThread;
-import com.videovillage.application.video.VideoListFragment;
+import com.videovillage.application.video.VideoPlayActivity;
 
 import java.util.Arrays;
 import java.util.HashMap;
 
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 
 /**
  * A sample Activity showing how to manage multiple YouTubeThumbnailViews in an adapter for display
@@ -38,15 +45,16 @@ import butterknife.ButterKnife;
  */
 
 public class MainActivity extends AppCompatActivity implements MainContract.View, ListView.OnItemClickListener {
-    private VideoListFragment listFragment;
     private AQuery aq;
     private HashMap<String, String> youtubeSubscribeList;
     private String[] navItems;
     private ListView lvNavList;
     private DrawerLayout dlDrawer;
     private ActionBarDrawerToggle dtToggle;
-
     private MainContract.UserAction mMainPresenter;
+    private ListView listView;
+    private PageAdapter pageAdapter;
+    public static boolean DEBUG = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +68,16 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         initActionbar();
 
         checkYouTubeApi();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -76,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         YouTubeInitializationResult errorReason =
                 YouTubeApiServiceUtil.isYouTubeApiServiceAvailable(this);
         if (errorReason.isUserRecoverableError()) {
-            errorReason.getErrorDialog(this, Constant.RECOVERY_DIALOG_REQUEST).show();
+            errorReason.getErrorDialog(this, SharedStore.getInt(MainActivity.this, Constant.RECOVERY_DIALOG_REQUEST)).show();
         } else if (errorReason != YouTubeInitializationResult.SUCCESS) {
             String errorMessage =
                     String.format(getString(R.string.error_player), errorReason.toString());
@@ -86,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Constant.RECOVERY_DIALOG_REQUEST) {
+        if (requestCode == SharedStore.getInt(MainActivity.this, Constant.RECOVERY_DIALOG_REQUEST)) {
             recreate();
         }
     }
@@ -102,9 +120,19 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         String videoName = youtubeSubscribeList.get(navItems[position]);
 
         videoName = mMainPresenter.choiceYoutubeChannel(videoName);
-        new VideosSearchThread(MainActivity.this, listFragment).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, videoName);
+        new VideosSearchThread(MainActivity.this, pageAdapter).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, videoName);
 
         dlDrawer.closeDrawer(lvNavList);
+    }
+
+    @Override
+    @OnItemClick(R.id.listview)
+    public void onListItemClick(int position) {
+        VideoEntry videoEntry = DataManager.getDataManager().getVideoEntry().get(position);
+
+        Intent videoPlay = new Intent(getApplicationContext(), VideoPlayActivity.class);
+        videoPlay.putExtra("VideoEntry", videoEntry);
+        startActivity(videoPlay);
     }
 
     @Override
@@ -116,6 +144,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         aq = new AQuery(this);
 
+        DEBUG = isDebuggable(this);
+
         youtubeSubscribeList = new HashMap<String, String>();
 
         navItems = new String[]{"망가녀 Mangganyeo", "남욱이의 욱기는 일상", "HANA 김하나", "귄펭 GUINPEN",
@@ -124,7 +154,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
                 "비디오빌리지", "걸스빌리지", "보이즈빌리지", "욱망나생", "이채은 CHAEEUN", "재인 아카데미 (Jaein Academy)",
                 "큐피디", "엘피디", "김피디", "범피디", "정아TV", "JK ENT", "주", "BEAN", "유소 (YUSO)", "Hemtube (햄튜브)"};
 
-        listFragment = (VideoListFragment) getFragmentManager().findFragmentById(R.id.list_fragment);
+        listView = (ListView) findViewById(R.id.listview);
+        pageAdapter = new PageAdapter(MainActivity.this, DataManager.getDataManager().getVideoEntry());
+        listView.setAdapter(pageAdapter);
 
         lvNavList = (ListView) findViewById(R.id.lv_activity_main_nav_list);
         Arrays.sort(navItems);
@@ -132,6 +164,22 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         lvNavList.setAdapter(
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, navItems));
         lvNavList.setOnItemClickListener(this);
+    }
+
+    @Override
+    public boolean isDebuggable(Context context) {
+        boolean debuggable = false;
+        PackageManager pm = context.getPackageManager();
+
+        try {
+            ApplicationInfo appinfo = pm.getApplicationInfo(context.getPackageName(), 0);
+            debuggable = (0 != (appinfo.flags & ApplicationInfo.FLAG_DEBUGGABLE));
+        } catch (PackageManager.NameNotFoundException e) {
+            /* debuggable variable will remain false */
+            e.printStackTrace();
+        }
+
+        return debuggable;
     }
 
     @Override

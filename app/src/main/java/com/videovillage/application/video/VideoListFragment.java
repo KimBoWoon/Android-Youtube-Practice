@@ -50,6 +50,16 @@ public final class VideoListFragment extends ListFragment {
         adapter.releaseLoaders();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
     public void setLabelVisibility(boolean visible) {
         adapter.setLabelVisibility(visible);
     }
