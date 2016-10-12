@@ -34,6 +34,7 @@ dependencies {
     compile 'com.google.firebase:firebase-crash:9.6.1'
     compile 'com.google.firebase:firebase-messaging:9.6.1'
     compile 'com.google.firebase:firebase-config:9.6.1'
+    // GSON
     compile 'com.google.code.gson:gson:2.7'
 }
 
