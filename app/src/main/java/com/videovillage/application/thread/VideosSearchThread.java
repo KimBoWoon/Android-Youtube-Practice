@@ -8,11 +8,11 @@ import android.widget.ProgressBar;
 
 import com.androidquery.AQuery;
 import com.androidquery.callback.AjaxCallback;
-import com.google.gson.Gson;
 import com.videovillage.application.R;
 import com.videovillage.application.adapter.PageAdapter;
 import com.videovillage.application.constant.Constant;
 import com.videovillage.application.data.DataManager;
+import com.videovillage.application.data.Loging;
 import com.videovillage.application.data.SharedStore;
 import com.videovillage.application.data.VideoEntry;
 import com.videovillage.application.mainactivity.MainActivity;
@@ -51,25 +51,15 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
         this.youtubeServerKey = SharedStore.getString(context, Constant.YOUTUBE_SERVER_API_KEY);
         this.urlString = matcher.replaceFirst(params[0]) + youtubeServerKey;
 
-        Log.i("FCM", "urlString : " + urlString);
+        Loging.i(urlString);
 
-        Gson gson = new Gson();
+        AjaxCallback<JSONObject> cb = new AjaxCallback<JSONObject>().url(urlString).type(JSONObject.class);
+        aq.sync(cb);
+        responseString = cb.getResult().toString();
+
+        Loging.i(responseString);
 
         try {
-//            HttpPresenter conn = new HttpPresenter();
-//            conn.initHttpConnection(urlString);
-
-//            responseString = conn.getJSONString();
-
-            AjaxCallback<JSONObject> cb = new AjaxCallback<JSONObject>();
-            cb.url(urlString).type(JSONObject.class);
-            aq.sync(cb);
-            responseString = cb.getResult().toString();
-
-            Log.i("responseString", "response : " + responseString);
-
-//            VideoEntry videoEntry = new Gson().fromJson(responseString, VideoEntry.class);
-
             JSONObject object = new JSONObject(responseString);
             JSONArray jarray = new JSONArray(object.getString("items"));
 

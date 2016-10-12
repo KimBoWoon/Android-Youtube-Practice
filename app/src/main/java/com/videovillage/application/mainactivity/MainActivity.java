@@ -1,6 +1,9 @@
 package com.videovillage.application.mainactivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private MainContract.UserAction mMainPresenter;
     private ListView listView;
     private PageAdapter pageAdapter;
+    public static boolean DEBUG = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +125,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         dlDrawer.closeDrawer(lvNavList);
     }
 
-    @Override @OnItemClick(R.id.listview)
+    @Override
+    @OnItemClick(R.id.listview)
     public void onListItemClick(int position) {
         VideoEntry videoEntry = DataManager.getDataManager().getVideoEntry().get(position);
 
@@ -138,6 +143,8 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         ButterKnife.bind(this);
 
         aq = new AQuery(this);
+
+        DEBUG = isDebuggable(this);
 
         youtubeSubscribeList = new HashMap<String, String>();
 
@@ -157,6 +164,22 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         lvNavList.setAdapter(
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, navItems));
         lvNavList.setOnItemClickListener(this);
+    }
+
+    @Override
+    public boolean isDebuggable(Context context) {
+        boolean debuggable = false;
+        PackageManager pm = context.getPackageManager();
+
+        try {
+            ApplicationInfo appinfo = pm.getApplicationInfo(context.getPackageName(), 0);
+            debuggable = (0 != (appinfo.flags & ApplicationInfo.FLAG_DEBUGGABLE));
+        } catch (PackageManager.NameNotFoundException e) {
+            /* debuggable variable will remain false */
+            e.printStackTrace();
+        }
+
+        return debuggable;
     }
 
     @Override

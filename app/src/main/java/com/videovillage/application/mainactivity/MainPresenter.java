@@ -1,7 +1,6 @@
 package com.videovillage.application.mainactivity;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -9,6 +8,7 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 import com.videovillage.application.constant.Constant;
 import com.videovillage.application.data.DataManager;
+import com.videovillage.application.data.Loging;
 import com.videovillage.application.data.SharedStore;
 
 /**
@@ -73,10 +73,10 @@ public class MainPresenter implements MainContract.UserAction {
                             Constant.VIDEO_SEARCH_URL,
                             config.getString(Constant.VIDEO_SEARCH_URL));
 
-                    Log.i("FCM", String.valueOf(config.getString(Constant.RECOVERY_DIALOG_REQUEST)));
-                    Log.i("FCM", String.valueOf(config.getString(Constant.YOUTUBE_ANDROID_API_KEY)));
-                    Log.i("FCM", String.valueOf(config.getString(Constant.YOUTUBE_SERVER_API_KEY)));
-                    Log.i("FCM", String.valueOf(config.getString(Constant.VIDEO_SEARCH_URL)));
+                    Loging.i(String.valueOf(config.getString(Constant.RECOVERY_DIALOG_REQUEST)));
+                    Loging.i(String.valueOf(config.getString(Constant.YOUTUBE_ANDROID_API_KEY)));
+                    Loging.i(String.valueOf(config.getString(Constant.YOUTUBE_SERVER_API_KEY)));
+                    Loging.i(String.valueOf(config.getString(Constant.VIDEO_SEARCH_URL)));
                 }
             }
         });
