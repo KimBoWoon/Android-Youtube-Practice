@@ -1,9 +1,6 @@
 package com.videovillage.application.mainactivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,12 +12,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.androidquery.AQuery;
 import com.beardedhen.androidbootstrap.TypefaceProvider;
-import com.google.android.youtube.player.YouTubeApiServiceUtil;
-import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.videovillage.application.R;
 import com.videovillage.application.adapter.PageAdapter;
 import com.videovillage.application.constant.Constant;
@@ -31,7 +25,6 @@ import com.videovillage.application.thread.VideosSearchThread;
 import com.videovillage.application.video.VideoPlayActivity;
 
 import java.util.Arrays;
-import java.util.HashMap;
 
 import butterknife.ButterKnife;
 import butterknife.OnItemClick;
@@ -46,7 +39,6 @@ import butterknife.OnItemClick;
 
 public class MainActivity extends AppCompatActivity implements MainContract.View, ListView.OnItemClickListener {
     private AQuery aq;
-    private HashMap<String, String> youtubeSubscribeList;
     private String[] navItems;
     private ListView lvNavList;
     private DrawerLayout dlDrawer;
@@ -54,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private MainContract.UserAction mMainPresenter;
     private ListView listView;
     private PageAdapter pageAdapter;
-    public static boolean DEBUG = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +54,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         initView();
 
-        youtubeChannelInsert();
-
         initActionbar();
-
-        checkYouTubeApi();
     }
 
     @Override
@@ -90,18 +77,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         return dtToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
-    private void checkYouTubeApi() {
-        YouTubeInitializationResult errorReason =
-                YouTubeApiServiceUtil.isYouTubeApiServiceAvailable(this);
-        if (errorReason.isUserRecoverableError()) {
-            errorReason.getErrorDialog(this, SharedStore.getInt(MainActivity.this, Constant.RECOVERY_DIALOG_REQUEST)).show();
-        } else if (errorReason != YouTubeInitializationResult.SUCCESS) {
-            String errorMessage =
-                    String.format(getString(R.string.error_player), errorReason.toString());
-            Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
-        }
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == SharedStore.getInt(MainActivity.this, Constant.RECOVERY_DIALOG_REQUEST)) {
@@ -117,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
     @Override
     public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-        String videoName = youtubeSubscribeList.get(navItems[position]);
+        String videoName = mMainPresenter.getYoutubeSubscribeList().get(navItems[position]);
 
         videoName = mMainPresenter.choiceYoutubeChannel(videoName);
         new VideosSearchThread(MainActivity.this, pageAdapter).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, videoName);
@@ -144,10 +119,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
 
         aq = new AQuery(this);
 
-        DEBUG = isDebuggable(this);
-
-        youtubeSubscribeList = new HashMap<String, String>();
-
         navItems = new String[]{"망가녀 Mangganyeo", "남욱이의 욱기는 일상", "HANA 김하나", "귄펭 GUINPEN",
                 "가랏 혜수몬", "맹채연구소", "안재억", "0zoo 영주", "진이 유튜브", "채르니 Chaerny", "공대생 변승주",
                 "여정을 떠난 여정", "공대언니 Engin2ring_girl", "예쁘린", "신별 ShinByul", "이루리 ILULIY",
@@ -164,22 +135,6 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         lvNavList.setAdapter(
                 new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, navItems));
         lvNavList.setOnItemClickListener(this);
-    }
-
-    @Override
-    public boolean isDebuggable(Context context) {
-        boolean debuggable = false;
-        PackageManager pm = context.getPackageManager();
-
-        try {
-            ApplicationInfo appinfo = pm.getApplicationInfo(context.getPackageName(), 0);
-            debuggable = (0 != (appinfo.flags & ApplicationInfo.FLAG_DEBUGGABLE));
-        } catch (PackageManager.NameNotFoundException e) {
-            /* debuggable variable will remain false */
-            e.printStackTrace();
-        }
-
-        return debuggable;
     }
 
     @Override
@@ -200,41 +155,5 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         };
         dlDrawer.setDrawerListener(dtToggle);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    }
-
-    @Override
-    public void youtubeChannelInsert() {
-        youtubeSubscribeList.put("망가녀 Mangganyeo", "UCTCYh96Ex4lRWMRg0YQvlIQ");
-        youtubeSubscribeList.put("남욱이의 욱기는 일상", "UCIU2ghnE-3MMhLTlh_7hzZQ");
-        youtubeSubscribeList.put("HANA 김하나", "UCfTswP_uNy_h86pUjCU410A");
-        youtubeSubscribeList.put("귄펭 GUINPEN", "UCkkfPjfgr8LZLrifl3FmNhg");
-        youtubeSubscribeList.put("가랏 혜수몬", "UCUlykKBn12YNqb2U2rnogGQ");
-        youtubeSubscribeList.put("맹채연구소", "UCEwq4lvvcNHdVWmpW9Je2SQ");
-        youtubeSubscribeList.put("안재억", "UC5xBoynZ_GvifP3J0Le12yw");
-        youtubeSubscribeList.put("0zoo 영주", "UC7buwq_navFjilxdYaGO0xw");
-        youtubeSubscribeList.put("진이 유튜브", "UCIHKbd4QntJvCXQqvRrBp6Q");
-        youtubeSubscribeList.put("채르니 Chaerny", "UCZVpc4jDiGdfmJigYivj6pw");
-        youtubeSubscribeList.put("공대생 변승주", "UChE5nZAIhWS5vYTRjsUgRpQ");
-        youtubeSubscribeList.put("여정을 떠난 여정", "UCsU2RlGgybcLzfmBqnTx-Rw");
-        youtubeSubscribeList.put("공대언니 Engin2ring_girl", "UC5R_lLymIFhoFQlqLgZsNqw");
-        youtubeSubscribeList.put("예쁘린", "UCGViywDjm32R0UuyaBVE7pQ");
-        youtubeSubscribeList.put("신별 ShinByul", "UCUcIUXAGcXpnu8gH1HKL6Tw");
-        youtubeSubscribeList.put("이루리 ILULIY", "UCG0JecZ4QvGGfO-asHGhCIA");
-        youtubeSubscribeList.put("욱망나생", "UCd2D8vMvf3MPt6T3sncSfeA");
-        youtubeSubscribeList.put("이채은 CHAEEUN", "UCk4ZCDRb2lEvh5by4ceGDDw");
-        youtubeSubscribeList.put("재인 아카데미 (Jaein Academy)", "UCt-O6YfZqyNkToaS7JqWxkQ");
-        youtubeSubscribeList.put("큐피디", "UCV1whfczLoVM5HBgzmuknkg");
-        youtubeSubscribeList.put("엘피디", "UCmncNwwVVXvTH4oYIxODxMQ");
-        youtubeSubscribeList.put("김피디", "UCPganpI_QsoOiA6-J0C-X-Q");
-        youtubeSubscribeList.put("범피디", "UCOpWGjq4Yp7izNRfShkekjw");
-        youtubeSubscribeList.put("정아TV", "UCXoyOGFkB1ssgOf7ZjCqQlQ");
-        youtubeSubscribeList.put("JK ENT", "UCIB_oNqi62rKnPFb3Toaozw");
-        youtubeSubscribeList.put("주", "UCG_1467YPgA4L_EywJKisXw");
-        youtubeSubscribeList.put("BEAN", "UCDgz8c2bv-VaTbraQQFdpjQ");
-        youtubeSubscribeList.put("유소 (YUSO)", "UCGRxkFCoi0RsWelthcaTjMw");
-        youtubeSubscribeList.put("Hemtube (햄튜브)", "UCPydsWBQpnXGICE-XWGNdow");
-        youtubeSubscribeList.put("비디오빌리지", "UCENi3E1IyV0nvIIrha8GIvQ");
-        youtubeSubscribeList.put("걸스빌리지", "UCedoBeDMzwnPJazRvvoOXhQ");
-        youtubeSubscribeList.put("보이즈빌리지", "UCuSaFvVbK9QpZlbn8Vf34RA");
     }
 }

@@ -2,7 +2,7 @@ package com.videovillage.application.data;
 
 import android.util.Log;
 
-import com.videovillage.application.mainactivity.MainActivity;
+import com.videovillage.application.mainactivity.MainPresenter;
 
 /**
  * Created by 보운 on 2016-10-12.
@@ -15,7 +15,7 @@ public class Loging {
      * Log Level Error
      **/
     public static void e(String message) {
-        if (MainActivity.DEBUG) {
+        if (MainPresenter.DEBUG) {
             Log.e(TAG, buildLogMsg(message));
         }
     }
@@ -24,7 +24,7 @@ public class Loging {
      * Log Level Warning
      **/
     public static void w(String message) {
-        if (MainActivity.DEBUG) {
+        if (MainPresenter.DEBUG) {
             Log.w(TAG, buildLogMsg(message));
         }
     }
@@ -33,7 +33,7 @@ public class Loging {
      * Log Level Information
      **/
     public static void i(String message) {
-        if (MainActivity.DEBUG) {
+        if (MainPresenter.DEBUG) {
             Log.i(TAG, buildLogMsg(message));
         }
     }
@@ -42,7 +42,7 @@ public class Loging {
      * Log Level Debug
      **/
     public static void d(String message) {
-        if (MainActivity.DEBUG) {
+        if (MainPresenter.DEBUG) {
             Log.d(TAG, buildLogMsg(message));
         }
     }
@@ -51,7 +51,7 @@ public class Loging {
      * Log Level Verbose
      **/
     public static void v(String message) {
-        if (MainActivity.DEBUG) {
+        if (MainPresenter.DEBUG) {
             Log.v(TAG, buildLogMsg(message));
         }
     }
