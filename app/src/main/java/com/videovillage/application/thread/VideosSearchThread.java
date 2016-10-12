@@ -6,13 +6,15 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import com.androidquery.AQuery;
+import com.androidquery.callback.AjaxCallback;
+import com.google.gson.Gson;
 import com.videovillage.application.R;
 import com.videovillage.application.adapter.PageAdapter;
 import com.videovillage.application.constant.Constant;
 import com.videovillage.application.data.DataManager;
 import com.videovillage.application.data.SharedStore;
 import com.videovillage.application.data.VideoEntry;
-import com.videovillage.application.http.HttpPresenter;
 import com.videovillage.application.mainactivity.MainActivity;
 
 import org.json.JSONArray;
@@ -38,6 +40,7 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
     private PageAdapter pageAdapter;
     private String responseString;
     private String youtubeServerKey;
+    private AQuery aq;
 
     @Override
     protected String doInBackground(String... params) {
@@ -50,13 +53,22 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
 
         Log.i("FCM", "urlString : " + urlString);
 
+        Gson gson = new Gson();
+
         try {
-            HttpPresenter conn = new HttpPresenter();
-            conn.initHttpConnection(urlString);
+//            HttpPresenter conn = new HttpPresenter();
+//            conn.initHttpConnection(urlString);
 
-            responseString = conn.getJSONString();
+//            responseString = conn.getJSONString();
 
-            Log.d("responseString", "" + responseString);
+            AjaxCallback<JSONObject> cb = new AjaxCallback<JSONObject>();
+            cb.url(urlString).type(JSONObject.class);
+            aq.sync(cb);
+            responseString = cb.getResult().toString();
+
+            Log.i("responseString", "response : " + responseString);
+
+//            VideoEntry videoEntry = new Gson().fromJson(responseString, VideoEntry.class);
 
             JSONObject object = new JSONObject(responseString);
             JSONArray jarray = new JSONArray(object.getString("items"));
@@ -102,6 +114,7 @@ public class VideosSearchThread extends AsyncTask<String, Integer, String> {
         super();
         this.context = context;
         this.pageAdapter = pageAdapter;
+        this.aq = new AQuery(context);
     }
 
     @Override
