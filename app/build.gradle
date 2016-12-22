@@ -36,6 +36,8 @@ dependencies {
     compile 'com.google.firebase:firebase-config:9.6.1'
     // GSON
     compile 'com.google.code.gson:gson:2.7'
+    // Mockito
+    testCompile "org.mockito:mockito-core:2.+"
 }
 
 apply plugin: 'com.google.gms.google-services'
