@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/bomdalsae"
+            android:title="@string/bomdalsae" />
+        <item
+            android:id="@+id/whitepang"
+            android:title="@string/whitepang" />
+        <item
+            android:id="@+id/minga"
+            android:title="@string/minga" />
+        <item
+            android:id="@+id/sook"
+            android:title="@string/sook" />
+        <item
+            android:id="@+id/bomi"
+            android:title="@string/bomi" />
+    </group>
+
+</menu>

@@ -1,66 +1,26 @@
-<?xml version="1.0" encoding="utf-8"?><!--
-  Copyright 2012 Google Inc. All Rights Reserved.
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
-<android.support.v4.widget.DrawerLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    tools:openDrawer="start">
 
-    <!--<LinearLayout-->
-        <!--android:id="@+id/main_content"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal">-->
-
-        <!--<com.beardedhen.androidbootstrap.BootstrapEditText-->
-            <!--android:id="@+id/video_name"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="2"-->
-            <!--android:inputType="title"-->
-            <!--app:bootstrapBrand="info"-->
-            <!--app:bootstrapSize="lg"-->
-            <!--app:roundedCorners="true" />-->
-
-        <!--<com.beardedhen.androidbootstrap.BootstrapButton-->
-            <!--android:id="@+id/video_name_submit"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:title="@string/video_search_button_text"-->
-            <!--app:bootstrapBrand="primary"-->
-            <!--app:bootstrapSize="xl"-->
-            <!--app:buttonMode="regular"-->
-            <!--app:roundedCorners="true" />-->
-    <!--</LinearLayout>-->
-
-    <fragment
-        android:id="@+id/list_fragment"
-        class="com.videovillage.application.video.VideoListFragment"
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <ListView android:layout_width="240dp"
-        android:layout_height="match_parent"
-        android:id="@+id/lv_activity_main_nav_list"
-        android:layout_gravity="start"
-        android:choiceMode="singleChoice"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="0dp"
-        android:background="#EDEDED"/>
+    <!--<android.support.design.widget.NavigationView-->
+    <!--android:id="@+id/nav_view"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_gravity="start"-->
+    <!--android:fitsSystemWindows="true"-->
+    <!--app:headerLayout="@layout/nav_header_main"-->
+    <!--app:menu="@menu/activity_main_drawer" />-->
+
 </android.support.v4.widget.DrawerLayout>
