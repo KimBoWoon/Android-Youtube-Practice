@@ -7,33 +7,30 @@ android:
     # use the latest revision of Android SDK Tools
 
     # The BuildTools version used by your project
-    - build-tools-23.0.1
-    
-    # Library
-    - tools
-    - build-tools-24.0.2
-    - android-24
-    - platform-tools
-    - extra-google-google_play_services
-    - extra-google-m2repository
-    - extra-android-m2repository
-    - extra-android-support
-    - addon-google_apis-google-24
+#    - build-tools-23.0.1
+#
+#    # Library
+#    - tools
+#    - build-tools-24.0.2
+#    - android-24
+#    - platform-tools
+#    - extra-google-google_play_services
+#    - extra-google-m2repository
+#    - extra-android-m2repository
+#    - extra-android-support
+#    - addon-google_apis-google-24
+#
+#    # The SDK version used to compile your project
+#    - android-21
+#    - android-22
+#    - android-23
 
-    # The SDK version used to compile your project
-    - android-21
-    - android-22
-    - android-23
-
-env:
-  - GRADLE_HOME=gradle-2.12/bin
-
-before_script:
-  - sudo add-apt-repository ppa:cwchien/gradle -y
-  - sudo apt-get update -y
-  - sudo apt-get install gradle -y
-  - sudo gradle -version
+#before_script:
+#  - sudo add-apt-repository ppa:cwchien/gradle -y
+#  - sudo apt-get update -y
+#  - sudo apt-get install gradle -y
+#  - sudo gradle -version
 
 script:
-  - sudo gradle build
+  - sudo ./gradlew clean build
 
