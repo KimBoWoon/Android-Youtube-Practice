@@ -1,0 +1,1655 @@
+[
+    {
+        "outputFile": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 44,
+                    "endOffset": 95
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 53,
+                        "startColumn": 4,
+                        "startOffset": 1807,
+                        "endColumn": 44,
+                        "endOffset": 1847
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 100,
+                    "endLine": 11,
+                    "endColumn": 11,
+                    "endOffset": 439
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 93,
+                        "endLine": 13,
+                        "endColumn": 11,
+                        "endOffset": 440
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 444,
+                    "endLine": 15,
+                    "endColumn": 11,
+                    "endOffset": 582
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 39,
+                        "startColumn": 4,
+                        "startOffset": 1211,
+                        "endLine": 42,
+                        "endColumn": 11,
+                        "endOffset": 1352
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 587,
+                    "endLine": 23,
+                    "endColumn": 11,
+                    "endOffset": 859
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 920,
+                        "endLine": 37,
+                        "endColumn": 11,
+                        "endOffset": 1199
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 864,
+                    "endLine": 30,
+                    "endColumn": 11,
+                    "endOffset": 1097
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 673,
+                        "endLine": 28,
+                        "endColumn": 11,
+                        "endOffset": 912
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 31,
+                    "startColumn": 4,
+                    "startOffset": 1102,
+                    "endLine": 36,
+                    "endColumn": 11,
+                    "endOffset": 1314
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 448,
+                        "endLine": 20,
+                        "endColumn": 11,
+                        "endOffset": 665
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 37,
+                    "startColumn": 4,
+                    "startOffset": 1319,
+                    "endColumn": 43,
+                    "endOffset": 1358
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 48,
+                        "startColumn": 4,
+                        "startOffset": 1561,
+                        "endColumn": 43,
+                        "endOffset": 1600
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 38,
+                    "startColumn": 4,
+                    "startOffset": 1363,
+                    "endColumn": 51,
+                    "endOffset": 1410
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 47,
+                        "startColumn": 4,
+                        "startOffset": 1508,
+                        "endColumn": 51,
+                        "endOffset": 1555
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 39,
+                    "startColumn": 4,
+                    "startOffset": 1415,
+                    "endColumn": 47,
+                    "endOffset": 1458
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 54,
+                        "startColumn": 4,
+                        "startOffset": 1853,
+                        "endColumn": 47,
+                        "endOffset": 1896
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 40,
+                    "startColumn": 4,
+                    "startOffset": 1463,
+                    "endColumn": 54,
+                    "endOffset": 1513
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 49,
+                        "startColumn": 4,
+                        "startOffset": 1606,
+                        "endColumn": 54,
+                        "endOffset": 1656
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 41,
+                    "startColumn": 4,
+                    "startOffset": 1518,
+                    "endLine": 735,
+                    "endColumn": 11,
+                    "endOffset": 34665
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs_font_awesome.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 59,
+                        "endLine": 697,
+                        "endColumn": 11,
+                        "endOffset": 33900
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 736,
+                    "startColumn": 4,
+                    "startOffset": 34670,
+                    "endColumn": 45,
+                    "endOffset": 34711
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 46,
+                        "startColumn": 4,
+                        "startOffset": 1461,
+                        "endColumn": 45,
+                        "endOffset": 1502
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 737,
+                    "startColumn": 4,
+                    "startOffset": 34716,
+                    "endColumn": 48,
+                    "endOffset": 34760
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 50,
+                        "startColumn": 4,
+                        "startOffset": 1662,
+                        "endColumn": 48,
+                        "endOffset": 1706
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 738,
+                    "startColumn": 4,
+                    "startOffset": 34765,
+                    "endColumn": 46,
+                    "endOffset": 34807
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 52,
+                        "startColumn": 4,
+                        "startOffset": 1759,
+                        "endColumn": 46,
+                        "endOffset": 1801
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 739,
+                    "startColumn": 4,
+                    "startOffset": 34812,
+                    "endColumn": 50,
+                    "endOffset": 34858
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 45,
+                        "startColumn": 4,
+                        "startOffset": 1409,
+                        "endColumn": 50,
+                        "endOffset": 1455
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 740,
+                    "startColumn": 4,
+                    "startOffset": 34863,
+                    "endColumn": 47,
+                    "endOffset": 34906
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 44,
+                        "startColumn": 4,
+                        "startOffset": 1360,
+                        "endColumn": 47,
+                        "endOffset": 1403
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 741,
+                    "startColumn": 4,
+                    "startOffset": 34911,
+                    "endColumn": 45,
+                    "endOffset": 34952
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs.xml",
+                    "position": {
+                        "startLine": 51,
+                        "startColumn": 4,
+                        "startOffset": 1712,
+                        "endColumn": 45,
+                        "endOffset": 1753
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 742,
+                    "startColumn": 4,
+                    "startOffset": 34957,
+                    "endLine": 1079,
+                    "endColumn": 11,
+                    "endOffset": 51999
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\attrs_typicons.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 59,
+                        "endLine": 340,
+                        "endColumn": 11,
+                        "endOffset": 17438
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1080,
+                    "startColumn": 4,
+                    "startOffset": 52004,
+                    "endColumn": 65,
+                    "endOffset": 52065
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 1319,
+                        "endColumn": 65,
+                        "endOffset": 1380
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1081,
+                    "startColumn": 4,
+                    "startOffset": 52070,
+                    "endColumn": 56,
+                    "endOffset": 52122
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 667,
+                        "endColumn": 56,
+                        "endOffset": 719
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1082,
+                    "startColumn": 4,
+                    "startOffset": 52127,
+                    "endColumn": 54,
+                    "endOffset": 52177
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 552,
+                        "endColumn": 54,
+                        "endOffset": 602
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1083,
+                    "startColumn": 4,
+                    "startOffset": 52182,
+                    "endColumn": 57,
+                    "endOffset": 52235
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 434,
+                        "endColumn": 57,
+                        "endOffset": 487
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1084,
+                    "startColumn": 4,
+                    "startOffset": 52240,
+                    "endColumn": 66,
+                    "endOffset": 52302
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 845,
+                        "endColumn": 66,
+                        "endOffset": 907
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1085,
+                    "startColumn": 4,
+                    "startOffset": 52307,
+                    "endColumn": 64,
+                    "endOffset": 52367
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 779,
+                        "endColumn": 64,
+                        "endOffset": 839
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1086,
+                    "startColumn": 4,
+                    "startOffset": 52372,
+                    "endColumn": 64,
+                    "endOffset": 52432
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 913,
+                        "endColumn": 64,
+                        "endOffset": 973
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1087,
+                    "startColumn": 4,
+                    "startOffset": 52437,
+                    "endColumn": 57,
+                    "endOffset": 52490
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 493,
+                        "endColumn": 57,
+                        "endOffset": 546
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1088,
+                    "startColumn": 4,
+                    "startOffset": 52495,
+                    "endColumn": 57,
+                    "endOffset": 52548
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 608,
+                        "endColumn": 57,
+                        "endOffset": 661
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1089,
+                    "startColumn": 4,
+                    "startOffset": 52553,
+                    "endColumn": 60,
+                    "endOffset": 52609
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 1194,
+                        "endColumn": 60,
+                        "endOffset": 1250
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1090,
+                    "startColumn": 4,
+                    "startOffset": 52614,
+                    "endColumn": 63,
+                    "endOffset": 52673
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1000,
+                        "endColumn": 63,
+                        "endOffset": 1059
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1091,
+                    "startColumn": 4,
+                    "startOffset": 52678,
+                    "endColumn": 48,
+                    "endOffset": 52722
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 189,
+                        "endColumn": 48,
+                        "endOffset": 233
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1092,
+                    "startColumn": 4,
+                    "startOffset": 52727,
+                    "endColumn": 53,
+                    "endOffset": 52776
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 134,
+                        "endColumn": 53,
+                        "endOffset": 183
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1093,
+                    "startColumn": 4,
+                    "startOffset": 52781,
+                    "endColumn": 54,
+                    "endOffset": 52831
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 239,
+                        "endColumn": 54,
+                        "endOffset": 289
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1094,
+                    "startColumn": 4,
+                    "startOffset": 52836,
+                    "endColumn": 56,
+                    "endOffset": 52888
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 295,
+                        "endColumn": 56,
+                        "endOffset": 347
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1095,
+                    "startColumn": 4,
+                    "startOffset": 52893,
+                    "endColumn": 57,
+                    "endOffset": 52946
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 353,
+                        "endColumn": 57,
+                        "endOffset": 406
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1096,
+                    "startColumn": 4,
+                    "startOffset": 52951,
+                    "endColumn": 66,
+                    "endOffset": 53013
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1065,
+                        "endColumn": 66,
+                        "endOffset": 1127
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1097,
+                    "startColumn": 4,
+                    "startOffset": 53018,
+                    "endColumn": 59,
+                    "endOffset": 53073
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 1133,
+                        "endColumn": 59,
+                        "endOffset": 1188
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1098,
+                    "startColumn": 4,
+                    "startOffset": 53078,
+                    "endColumn": 61,
+                    "endOffset": 53135
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 31,
+                        "startColumn": 4,
+                        "startOffset": 1256,
+                        "endColumn": 61,
+                        "endOffset": 1313
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1111,
+                    "startColumn": 4,
+                    "startOffset": 55373,
+                    "endColumn": 64,
+                    "endOffset": 55433
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 919,
+                        "endColumn": 64,
+                        "endOffset": 979
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1112,
+                    "startColumn": 4,
+                    "startOffset": 55438,
+                    "endColumn": 54,
+                    "endOffset": 55488
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 803,
+                        "endColumn": 54,
+                        "endOffset": 853
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1113,
+                    "startColumn": 4,
+                    "startOffset": 55493,
+                    "endColumn": 58,
+                    "endOffset": 55547
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 859,
+                        "endColumn": 58,
+                        "endOffset": 913
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1114,
+                    "startColumn": 4,
+                    "startOffset": 55552,
+                    "endColumn": 59,
+                    "endOffset": 55607
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 69,
+                        "startColumn": 4,
+                        "startOffset": 3297,
+                        "endColumn": 59,
+                        "endOffset": 3352
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1115,
+                    "startColumn": 4,
+                    "startOffset": 55612,
+                    "endColumn": 68,
+                    "endOffset": 55676
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 262,
+                        "endColumn": 68,
+                        "endOffset": 326
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1116,
+                    "startColumn": 4,
+                    "startOffset": 55681,
+                    "endColumn": 65,
+                    "endOffset": 55742
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 332,
+                        "endColumn": 65,
+                        "endOffset": 393
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1117,
+                    "startColumn": 4,
+                    "startOffset": 55747,
+                    "endColumn": 65,
+                    "endOffset": 55808
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 53,
+                        "endColumn": 65,
+                        "endOffset": 114
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1118,
+                    "startColumn": 4,
+                    "startOffset": 55813,
+                    "endColumn": 68,
+                    "endOffset": 55877
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 192,
+                        "endColumn": 68,
+                        "endOffset": 256
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1119,
+                    "startColumn": 4,
+                    "startOffset": 55882,
+                    "endColumn": 70,
+                    "endOffset": 55948
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 120,
+                        "endColumn": 70,
+                        "endOffset": 186
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1120,
+                    "startColumn": 4,
+                    "startOffset": 55953,
+                    "endColumn": 61,
+                    "endOffset": 56010
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 67,
+                        "startColumn": 4,
+                        "startOffset": 3172,
+                        "endColumn": 61,
+                        "endOffset": 3229
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1121,
+                    "startColumn": 4,
+                    "startOffset": 56015,
+                    "endColumn": 70,
+                    "endOffset": 56081
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 35,
+                        "startColumn": 4,
+                        "startOffset": 1713,
+                        "endColumn": 70,
+                        "endOffset": 1779
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1122,
+                    "startColumn": 4,
+                    "startOffset": 56086,
+                    "endColumn": 67,
+                    "endOffset": 56149
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 36,
+                        "startColumn": 4,
+                        "startOffset": 1785,
+                        "endColumn": 67,
+                        "endOffset": 1848
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1123,
+                    "startColumn": 4,
+                    "startOffset": 56154,
+                    "endColumn": 67,
+                    "endOffset": 56217
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 32,
+                        "startColumn": 4,
+                        "startOffset": 1491,
+                        "endColumn": 67,
+                        "endOffset": 1554
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1124,
+                    "startColumn": 4,
+                    "startOffset": 56222,
+                    "endColumn": 69,
+                    "endOffset": 56287
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 38,
+                        "startColumn": 4,
+                        "startOffset": 1925,
+                        "endColumn": 69,
+                        "endOffset": 1990
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1125,
+                    "startColumn": 4,
+                    "startOffset": 56292,
+                    "endColumn": 72,
+                    "endOffset": 56360
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 31,
+                        "startColumn": 4,
+                        "startOffset": 1417,
+                        "endColumn": 72,
+                        "endOffset": 1485
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1126,
+                    "startColumn": 4,
+                    "startOffset": 56365,
+                    "endColumn": 69,
+                    "endOffset": 56430
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 39,
+                        "startColumn": 4,
+                        "startOffset": 1996,
+                        "endColumn": 69,
+                        "endOffset": 2061
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1127,
+                    "startColumn": 4,
+                    "startOffset": 56435,
+                    "endColumn": 74,
+                    "endOffset": 56505
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 33,
+                        "startColumn": 4,
+                        "startOffset": 1560,
+                        "endColumn": 74,
+                        "endOffset": 1630
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1128,
+                    "startColumn": 4,
+                    "startOffset": 56510,
+                    "endColumn": 75,
+                    "endOffset": 56581
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 1636,
+                        "endColumn": 75,
+                        "endOffset": 1707
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1129,
+                    "startColumn": 4,
+                    "startOffset": 56586,
+                    "endColumn": 69,
+                    "endOffset": 56651
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 37,
+                        "startColumn": 4,
+                        "startOffset": 1854,
+                        "endColumn": 69,
+                        "endOffset": 1919
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1130,
+                    "startColumn": 4,
+                    "startOffset": 56656,
+                    "endColumn": 63,
+                    "endOffset": 56715
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 640,
+                        "endColumn": 63,
+                        "endOffset": 699
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1131,
+                    "startColumn": 4,
+                    "startOffset": 56720,
+                    "endColumn": 68,
+                    "endOffset": 56784
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 4,
+                        "startOffset": 439,
+                        "endColumn": 68,
+                        "endOffset": 503
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1132,
+                    "startColumn": 4,
+                    "startOffset": 56789,
+                    "endColumn": 62,
+                    "endOffset": 56847
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 705,
+                        "endColumn": 62,
+                        "endOffset": 763
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1133,
+                    "startColumn": 4,
+                    "startOffset": 56852,
+                    "endColumn": 65,
+                    "endOffset": 56913
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 573,
+                        "endColumn": 65,
+                        "endOffset": 634
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1134,
+                    "startColumn": 4,
+                    "startOffset": 56918,
+                    "endColumn": 62,
+                    "endOffset": 56976
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 509,
+                        "endColumn": 62,
+                        "endOffset": 567
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1135,
+                    "startColumn": 4,
+                    "startOffset": 56981,
+                    "endColumn": 58,
+                    "endOffset": 57035
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 44,
+                        "startColumn": 4,
+                        "startOffset": 2210,
+                        "endColumn": 58,
+                        "endOffset": 2264
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1136,
+                    "startColumn": 4,
+                    "startOffset": 57040,
+                    "endColumn": 55,
+                    "endOffset": 57091
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 4,
+                        "startOffset": 2092,
+                        "endColumn": 55,
+                        "endOffset": 2143
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1137,
+                    "startColumn": 4,
+                    "startOffset": 57096,
+                    "endColumn": 59,
+                    "endOffset": 57151
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 43,
+                        "startColumn": 4,
+                        "startOffset": 2149,
+                        "endColumn": 59,
+                        "endOffset": 2204
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1138,
+                    "startColumn": 4,
+                    "startOffset": 57156,
+                    "endColumn": 58,
+                    "endOffset": 57210
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 48,
+                        "startColumn": 4,
+                        "startOffset": 2384,
+                        "endColumn": 58,
+                        "endOffset": 2438
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1139,
+                    "startColumn": 4,
+                    "startOffset": 57215,
+                    "endColumn": 53,
+                    "endOffset": 57264
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 46,
+                        "startColumn": 4,
+                        "startOffset": 2272,
+                        "endColumn": 53,
+                        "endOffset": 2321
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1140,
+                    "startColumn": 4,
+                    "startOffset": 57269,
+                    "endColumn": 55,
+                    "endOffset": 57320
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 47,
+                        "startColumn": 4,
+                        "startOffset": 2327,
+                        "endColumn": 55,
+                        "endOffset": 2378
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1141,
+                    "startColumn": 4,
+                    "startOffset": 57325,
+                    "endColumn": 57,
+                    "endOffset": 57378
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 52,
+                        "startColumn": 4,
+                        "startOffset": 2564,
+                        "endColumn": 57,
+                        "endOffset": 2617
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1142,
+                    "startColumn": 4,
+                    "startOffset": 57383,
+                    "endColumn": 55,
+                    "endOffset": 57434
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 50,
+                        "startColumn": 4,
+                        "startOffset": 2446,
+                        "endColumn": 55,
+                        "endOffset": 2497
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1143,
+                    "startColumn": 4,
+                    "startOffset": 57439,
+                    "endColumn": 59,
+                    "endOffset": 57494
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 51,
+                        "startColumn": 4,
+                        "startOffset": 2503,
+                        "endColumn": 59,
+                        "endOffset": 2558
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1144,
+                    "startColumn": 4,
+                    "startOffset": 57499,
+                    "endColumn": 57,
+                    "endOffset": 57552
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 56,
+                        "startColumn": 4,
+                        "startOffset": 2740,
+                        "endColumn": 57,
+                        "endOffset": 2793
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1145,
+                    "startColumn": 4,
+                    "startOffset": 57557,
+                    "endColumn": 53,
+                    "endOffset": 57606
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 54,
+                        "startColumn": 4,
+                        "startOffset": 2625,
+                        "endColumn": 53,
+                        "endOffset": 2674
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1146,
+                    "startColumn": 4,
+                    "startOffset": 57611,
+                    "endColumn": 58,
+                    "endOffset": 57665
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 55,
+                        "startColumn": 4,
+                        "startOffset": 2680,
+                        "endColumn": 58,
+                        "endOffset": 2734
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1147,
+                    "startColumn": 4,
+                    "startOffset": 57670,
+                    "endColumn": 55,
+                    "endOffset": 57721
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 60,
+                        "startColumn": 4,
+                        "startOffset": 2919,
+                        "endColumn": 55,
+                        "endOffset": 2970
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1148,
+                    "startColumn": 4,
+                    "startOffset": 57726,
+                    "endColumn": 55,
+                    "endOffset": 57777
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 58,
+                        "startColumn": 4,
+                        "startOffset": 2801,
+                        "endColumn": 55,
+                        "endOffset": 2852
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1149,
+                    "startColumn": 4,
+                    "startOffset": 57782,
+                    "endColumn": 59,
+                    "endOffset": 57837
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 59,
+                        "startColumn": 4,
+                        "startOffset": 2858,
+                        "endColumn": 59,
+                        "endOffset": 2913
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1150,
+                    "startColumn": 4,
+                    "startOffset": 57842,
+                    "endColumn": 57,
+                    "endOffset": 57895
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 64,
+                        "startColumn": 4,
+                        "startOffset": 3092,
+                        "endColumn": 57,
+                        "endOffset": 3145
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1151,
+                    "startColumn": 4,
+                    "startOffset": 57900,
+                    "endColumn": 53,
+                    "endOffset": 57949
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 62,
+                        "startColumn": 4,
+                        "startOffset": 2978,
+                        "endColumn": 53,
+                        "endOffset": 3027
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1152,
+                    "startColumn": 4,
+                    "startOffset": 57954,
+                    "endColumn": 57,
+                    "endOffset": 58007
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 63,
+                        "startColumn": 4,
+                        "startOffset": 3033,
+                        "endColumn": 57,
+                        "endOffset": 3086
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1153,
+                    "startColumn": 4,
+                    "startOffset": 58012,
+                    "endColumn": 60,
+                    "endOffset": 58068
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 68,
+                        "startColumn": 4,
+                        "startOffset": 3235,
+                        "endColumn": 60,
+                        "endOffset": 3291
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1154,
+                    "startColumn": 4,
+                    "startOffset": 58073,
+                    "endColumn": 58,
+                    "endOffset": 58127
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1200,
+                        "endColumn": 58,
+                        "endOffset": 1254
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1155,
+                    "startColumn": 4,
+                    "startOffset": 58132,
+                    "endColumn": 60,
+                    "endOffset": 58188
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 1319,
+                        "endColumn": 60,
+                        "endOffset": 1375
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1156,
+                    "startColumn": 4,
+                    "startOffset": 58193,
+                    "endColumn": 57,
+                    "endOffset": 58246
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1260,
+                        "endColumn": 57,
+                        "endOffset": 1313
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1157,
+                    "startColumn": 4,
+                    "startOffset": 58251,
+                    "endColumn": 55,
+                    "endOffset": 58302
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1012,
+                        "endColumn": 55,
+                        "endOffset": 1063
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1158,
+                    "startColumn": 4,
+                    "startOffset": 58307,
+                    "endColumn": 53,
+                    "endOffset": 58356
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1126,
+                        "endColumn": 53,
+                        "endOffset": 1175
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 1159,
+                    "startColumn": 4,
+                    "startOffset": 58361,
+                    "endColumn": 55,
+                    "endOffset": 58412
+                },
+                "from": {
+                    "file": "D:\\GitHub\\Android-Youtube-Practice\\AndroidBootstrap\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1069,
+                        "endColumn": 55,
+                        "endOffset": 1120
+                    }
+                }
+            }
+        ]
+    }
+]

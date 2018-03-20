@@ -26,10 +26,6 @@ import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
  * Created by Null on 2018-03-19.
  */
 
-interface ItemClickListener {
-    void onItemClick(int position);
-}
-
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements ItemClickListener {
     private List<VideosList> items;
     private Context context;
@@ -64,9 +60,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         HashMap<String, Object> snippet = items.get(0).getItems().get(position).getSnippet();
         HashMap<String, Object> id = items.get(0).getItems().get(position).getId();
-        ((VideoHolder) holder).videoTitle.setText(snippet.get("title").toString());
-        ((VideoHolder) holder).thumbnail.setTag(id.get("videoId"));
-        ((VideoHolder) holder).thumbnail.initialize(Constant.YOUTUBE_API_KEY, thumbnailListener);
+        ((VideoHolder) holder).getVideoTitle().setText(snippet.get("title").toString());
+        ((VideoHolder) holder).getThumbnail().setTag(id.get("videoId"));
+        ((VideoHolder) holder).getThumbnail().initialize(Constant.YOUTUBE_API_KEY, thumbnailListener);
     }
 
     @Override
@@ -83,12 +79,28 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public String getItemTitle(int position) {
-        return items.get(position).getItems().get(position).getSnippet().get("title").toString();
+        return items.get(0).getItems().get(position).getSnippet().get("title").toString();
     }
 
-    class VideoHolder extends RecyclerView.ViewHolder {
-        public TextView videoTitle;
-        public YouTubeThumbnailView thumbnail;
+    static class VideoHolder extends RecyclerView.ViewHolder {
+        private TextView videoTitle;
+        private YouTubeThumbnailView thumbnail;
+
+        public TextView getVideoTitle() {
+            return videoTitle;
+        }
+
+        public void setVideoTitle(TextView videoTitle) {
+            this.videoTitle = videoTitle;
+        }
+
+        public YouTubeThumbnailView getThumbnail() {
+            return thumbnail;
+        }
+
+        public void setThumbnail(YouTubeThumbnailView thumbnail) {
+            this.thumbnail = thumbnail;
+        }
 
         public VideoHolder(View itemView, final ItemClickListener itemClickListener) {
             super(itemView);

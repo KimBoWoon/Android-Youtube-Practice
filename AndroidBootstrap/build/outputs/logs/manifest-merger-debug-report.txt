@@ -1,0 +1,23 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml:2:1-55
+INJECTED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml:2:1-55
+INJECTED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml:2:1-55
+	package
+		ADDED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml:2:11-52
+		INJECTED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml
+		INJECTED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml
+uses-sdk
+INJECTED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml
+INJECTED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml
+INJECTED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml
+INJECTED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml
+		ADDED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml
+		INJECTED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml
+		ADDED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml
+		INJECTED from D:\GitHub\Android-Youtube-Practice\AndroidBootstrap\src\main\AndroidManifest.xml
